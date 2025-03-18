@@ -1,0 +1,17 @@
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/bin/Debug/net8.0/Ntier.DataAccess.deps.json
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/bin/Debug/net8.0/Ntier.DataAccess.runtimeconfig.json
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/bin/Debug/net8.0/Ntier.DataAccess.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/bin/Debug/net8.0/Ntier.DataAccess.pdb
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/Ntier.DataAccess.csproj.AssemblyReference.cache
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/Ntier.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/Ntier.DataAccess.AssemblyInfoInputs.cache
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/Ntier.DataAccess.AssemblyInfo.cs
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/Ntier.DataAccess.csproj.CoreCompileInputs.cache
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/Ntier.DataAccess.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/refint/Ntier.DataAccess.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/Ntier.DataAccess.pdb
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/Ntier.DataAccess.genruntimeconfig.cache
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/ref/Ntier.DataAccess.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/bin/Debug/net8.0/Ntier.Shared.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/bin/Debug/net8.0/Ntier.Shared.pdb
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/Ntier.Da.70B3B089.Up2Date

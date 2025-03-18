@@ -1,0 +1,11 @@
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/bin/Debug/net8.0/Ntier.Shared.deps.json
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/bin/Debug/net8.0/Ntier.Shared.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/bin/Debug/net8.0/Ntier.Shared.pdb
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/Ntier.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/Ntier.Shared.AssemblyInfoInputs.cache
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/Ntier.Shared.AssemblyInfo.cs
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/Ntier.Shared.csproj.CoreCompileInputs.cache
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/Ntier.Shared.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/refint/Ntier.Shared.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/Ntier.Shared.pdb
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/ref/Ntier.Shared.dll

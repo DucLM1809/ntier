@@ -1,0 +1,17 @@
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/bin/Debug/net8.0/Ntier.Business.deps.json
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/bin/Debug/net8.0/Ntier.Business.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/bin/Debug/net8.0/Ntier.Business.pdb
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/bin/Debug/net8.0/Ntier.DataAccess.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/bin/Debug/net8.0/Ntier.DataAccess.pdb
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/obj/Debug/net8.0/Ntier.Business.csproj.AssemblyReference.cache
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/obj/Debug/net8.0/Ntier.Business.GeneratedMSBuildEditorConfig.editorconfig
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/obj/Debug/net8.0/Ntier.Business.AssemblyInfoInputs.cache
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/obj/Debug/net8.0/Ntier.Business.AssemblyInfo.cs
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/obj/Debug/net8.0/Ntier.Business.csproj.CoreCompileInputs.cache
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/obj/Debug/net8.0/Ntier.Bu.8AE128F3.Up2Date
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/obj/Debug/net8.0/Ntier.Business.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/obj/Debug/net8.0/refint/Ntier.Business.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/obj/Debug/net8.0/Ntier.Business.pdb
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/obj/Debug/net8.0/ref/Ntier.Business.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/bin/Debug/net8.0/Ntier.Shared.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Business/bin/Debug/net8.0/Ntier.Shared.pdb

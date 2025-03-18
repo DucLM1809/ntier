@@ -1,0 +1,22 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.8"
+services:
+  api:
+    build:
+      context: "/Users/minhducle/Documents/ASP.Net/Ntier"
+      dockerfile: "Ntier.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Ntier.API.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "ntier.api:dev"
+    ports: []
+    volumes:
+    - "/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.API:/app:rw"
+    - "/Users/minhducle/Documents/ASP.Net/Ntier:/src:rw"
+    - "/Users/minhducle/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"
