@@ -37,7 +37,15 @@ namespace Ntier.API.Middlewares
                 );
 
                 context.Response.ContentType = "application/json";
-                await context.Response.WriteAsync(JsonSerializer.Serialize(response));
+                await context.Response.WriteAsync(
+                    JsonSerializer.Serialize(
+                        response,
+                        new JsonSerializerOptions
+                        {
+                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                        }
+                    )
+                );
             }
             catch (Exception ex)
             {
@@ -48,7 +56,15 @@ namespace Ntier.API.Middlewares
                     StatusCodes.Status500InternalServerError
                 );
                 context.Response.ContentType = "application/json";
-                await context.Response.WriteAsync(JsonSerializer.Serialize(response));
+                await context.Response.WriteAsync(
+                    JsonSerializer.Serialize(
+                        response,
+                        new JsonSerializerOptions
+                        {
+                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                        }
+                    )
+                );
             }
         }
     }
