@@ -13,8 +13,10 @@ public class AuthController : ControllerBase
     private readonly IAuthService _authService;
     private readonly IValidator<UserDto> _validator;
 
-    public AuthController(IAuthService authService, IValidator<UserDto> validator) =>
+    public AuthController(IAuthService authService, IValidator<UserDto> validator)
+    {
         (_authService, _validator) = (authService, validator);
+    }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] UserDto request)
@@ -23,7 +25,7 @@ public class AuthController : ControllerBase
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        var user = await _authService.Register(request.Email, request.Password, request.Role);
+        var user = await _authService.Register(request.Email, request.Password, request.Role.ToString());
 
         return Ok(
             new ApiResponse<UserResponseDto>(

@@ -9,9 +9,9 @@ namespace Ntier.Business.Service;
 
 public class AuthService : IAuthService
 {
-    private readonly IUserRepository _userRepository;
     private readonly IJwtService _jwtService;
     private readonly IMapper _mapper;
+    private readonly IUserRepository _userRepository;
 
     public AuthService(IUserRepository userRepository, IJwtService jwtService, IMapper mapper)
     {
@@ -23,10 +23,7 @@ public class AuthService : IAuthService
     public async Task<string> Authenticate(string email, string password)
     {
         var user = await _userRepository.GetUserByEmail(email);
-        if (user == null || !VerifyPassword(password, user.Password))
-        {
-            return null;
-        }
+        if (user == null || !VerifyPassword(password, user.Password)) return null;
 
         return _jwtService.GenerateToken(user);
     }
