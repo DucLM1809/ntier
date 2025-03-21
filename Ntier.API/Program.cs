@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Ntier.API.Filter;
 using Ntier.API.Middlewares;
 using Ntier.Business;
 using Ntier.DataAccess;
@@ -65,6 +66,42 @@ builder.Services.AddSwaggerGen(options =>
 
     // Force camelCase in Swagger models
     options.DescribeAllParametersInCamelCase();
+
+    // ✅ Display enums as string in Swagger
+    options.SchemaFilter<EnumSchemaFilter>();
+
+    // Add JWT Bearer Authorization to Swagger
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "Enter 'Bearer {your_token_here}'",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT"
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+            },
+            new string[] { }
+        }
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+            },
+            new string[] { } // Apply authentication globally, except public routes
+        }
+    });
 });
 ;
 

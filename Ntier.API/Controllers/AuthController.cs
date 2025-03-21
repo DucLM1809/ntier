@@ -1,4 +1,5 @@
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Ntier.Business.Service;
 using Ntier.Shared.Dtos;
@@ -18,6 +19,7 @@ public class AuthController : ControllerBase
         (_authService, _validator) = (authService, validator);
     }
 
+    [AllowAnonymous]
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] UserDto request)
     {
@@ -25,7 +27,7 @@ public class AuthController : ControllerBase
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        var user = await _authService.Register(request.Email, request.Password, request.Role.ToString());
+        var user = await _authService.Register(request.Email, request.Password, request.Role);
 
         return Ok(
             new ApiResponse<UserResponseDto>(
@@ -37,6 +39,7 @@ public class AuthController : ControllerBase
         );
     }
 
+    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] UserDto request)
     {
