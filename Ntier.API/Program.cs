@@ -79,6 +79,7 @@ if (app.Environment.IsDevelopment())
 
 // Register Global Middleware
 app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<JwtMiddleware>(jwtSettings["Secret"]);
 
 app.UseHttpsRedirection();
 
