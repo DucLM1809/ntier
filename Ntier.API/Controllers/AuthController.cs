@@ -27,7 +27,7 @@ public class AuthController : ControllerBase
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        var user = await _authService.Register(request.Email, request.Password, request.Role);
+        var user = await _authService.Register(request);
 
         return Ok(
             new ApiResponse<UserResponseDto>(

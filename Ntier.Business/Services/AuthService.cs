@@ -28,15 +28,11 @@ public class AuthService : IAuthService
         return _jwtService.GenerateToken(user);
     }
 
-    public async Task<UserResponseDto> Register(string email, string password, string role = "User")
+    public async Task<UserResponseDto> Register(UserDto userDto)
     {
-        var hashedPassword = HashPassword(password);
-        var user = new User
-        {
-            Email = email,
-            Password = hashedPassword,
-            Role = role
-        };
+        var hashedPassword = HashPassword(userDto.Password);
+
+        var user = _mapper.Map<User>(userDto with { Password = hashedPassword });
 
         await _userRepository.AddUser(user);
 

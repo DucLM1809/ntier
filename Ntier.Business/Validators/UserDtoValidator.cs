@@ -1,5 +1,6 @@
 using FluentValidation;
 using Ntier.Shared.Dtos;
+using Ntier.Shared.Enums;
 
 namespace Ntier.Business.Validators;
 
@@ -18,8 +19,7 @@ public class UserDtoValidator : AbstractValidator<UserDto>
             );
 
         RuleFor(x => x.Role)
-            .NotEmpty()
-            .Must(role => role == "User" || role == "Admin")
-            .WithMessage("Role must be either 'User' or 'Admin'");
+            .Must(role => Enum.IsDefined(typeof(Role), role)) // Check if enum exists
+            .WithMessage("Invalid role. Allowed values: 'User', 'Admin'.");
     }
 }

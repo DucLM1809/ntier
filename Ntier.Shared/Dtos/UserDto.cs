@@ -1,6 +1,10 @@
-namespace Ntier.Shared.Dtos
-{
-    public record UserDto(string Email, string Password, string Role);
+using Ntier.Shared.Enums;
 
-    public record UserResponseDto(string Email, string Role);
-}
+namespace Ntier.Shared.Dtos;
+
+public record UserDto(
+    string Email,
+    string Password,
+    Role Role);
+
+public record UserResponseDto(string Email, Role Role);
