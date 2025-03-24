@@ -4,11 +4,11 @@ using Ntier.Shared.Models;
 
 namespace Ntier.DataAccess.Repository;
 
-public class UserRepository : IUserRepository
+public class UserRepository : GenericRepository<User>, IUserRepository
 {
     private readonly DataContext _context;
 
-    public UserRepository(DataContext context)
+    public UserRepository(DataContext context) : base(context)
     {
         _context = context;
     }

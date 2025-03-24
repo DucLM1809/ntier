@@ -34,7 +34,7 @@ public class AuthService : IAuthService
 
         var user = _mapper.Map<User>(userDto with { Password = hashedPassword });
 
-        await _userRepository.AddUser(user);
+        await _userRepository.AddAsync(user);
 
         return _mapper.Map<UserResponseDto>(user);
     }
