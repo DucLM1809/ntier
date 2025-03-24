@@ -34,5 +34,7 @@ public class AuthorizeCheckOperationFilter : IOperationFilter
                     }
                 }
             };
+        else
+            operation.Security.Clear();
     }
 }

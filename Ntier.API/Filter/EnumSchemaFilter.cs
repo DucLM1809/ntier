@@ -13,7 +13,7 @@ public class EnumSchemaFilter : ISchemaFilter
             schema.Enum = Enum.GetNames(context.Type)
                 .Select(name => new OpenApiString(name))
                 .ToList<IOpenApiAny>();
-            schema.Type = "string"; // ✅ Force enum type to string
+            schema.Type = "string"; // Force enum type to string
         }
     }
 }

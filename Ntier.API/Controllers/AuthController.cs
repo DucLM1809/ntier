@@ -1,5 +1,4 @@
 using FluentValidation;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Ntier.Business.Service;
 using Ntier.Shared.Dtos;
@@ -19,7 +18,6 @@ public class AuthController : ControllerBase
         (_authService, _validator) = (authService, validator);
     }
 
-    [AllowAnonymous]
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] UserDto request)
     {
@@ -39,7 +37,6 @@ public class AuthController : ControllerBase
         );
     }
 
-    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] UserDto request)
     {
