@@ -12,6 +12,7 @@ public static class DependencyInjection
     {
         services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IUserService, UserService>();
 
         // Register AutoMapper
         services.AddAutoMapper(typeof(UserProfile));
