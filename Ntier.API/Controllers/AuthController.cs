@@ -7,7 +7,7 @@ using Ntier.Shared.Models;
 namespace Ntier.API.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[Route("[controller]")]
 public class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;

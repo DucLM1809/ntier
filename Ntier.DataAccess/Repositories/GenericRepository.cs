@@ -1,4 +1,6 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using Ntier.DataAccess.Extensions;
 using Ntier.DataAccess.Repository.Interfaces;
 using Ntier.Shared.Models;
 
@@ -15,9 +17,31 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         _dbSet = context.Set<T>();
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync()
+    public IQueryable<T> GetAll()
     {
-        return await _dbSet.ToListAsync();
+        return _dbSet.AsQueryable();
+    }
+
+    public IQueryable<T> Find(Expression<Func<T, bool>> predicate)
+    {
+        return _dbSet.Where(predicate).AsQueryable();
+    }
+
+    public async Task<List<T>> GetFilteredAsync(Expression<Func<T, bool>>? predicate = null,
+        QueryParameters? queryParams = null)
+    {
+        IQueryable<T> query = _dbSet;
+
+        // Apply Filtering (if predicate exists)
+        if (predicate != null) query = query.Where(predicate);
+
+        // Apply Sorting and Pagination (if queryParams exists)
+        if (queryParams != null)
+            query = query
+                .ApplySorting(queryParams.SortBy, queryParams.SortOrder)
+                .ApplyPagination(queryParams.Page, queryParams.PageSize);
+
+        return await query.ToListAsync();
     }
 
     public async Task<T> GetByIdAsync(Guid id)
