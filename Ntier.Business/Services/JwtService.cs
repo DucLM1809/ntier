@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Ntier.Shared.Enums;
 using Ntier.Shared.Models;
 
 namespace Ntier.Business.Service;
@@ -22,7 +23,7 @@ public class JwtService : IJwtService
         var claims = new[]
         {
             new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.Role, user.Role.ToString())
+            new Claim(ClaimTypes.Role, ((Role)user.Role).ToString())
         };
 
         var tokenDescriptor = new SecurityTokenDescriptor

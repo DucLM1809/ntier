@@ -11,17 +11,19 @@ namespace Ntier.API.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;
-    private readonly IValidator<UserDto> _validator;
+    private readonly IValidator<LoginDto> _loginValidator;
+    private readonly IValidator<UserDto> _userValidator;
 
-    public AuthController(IAuthService authService, IValidator<UserDto> validator)
+    public AuthController(IAuthService authService, IValidator<UserDto> userValidator,
+        IValidator<LoginDto> loginValidator)
     {
-        (_authService, _validator) = (authService, validator);
+        (_authService, _userValidator, _loginValidator) = (authService, userValidator, loginValidator);
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] UserDto request)
     {
-        var validationResult = await _validator.ValidateAsync(request);
+        var validationResult = await _userValidator.ValidateAsync(request);
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
@@ -38,9 +40,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] UserDto request)
+    public async Task<IActionResult> Login([FromBody] LoginDto request)
     {
-        var validationResult = await _validator.ValidateAsync(request);
+        var validationResult = await _loginValidator.ValidateAsync(request);
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 

@@ -6,9 +6,9 @@ using Ntier.Shared.Models;
 
 namespace Ntier.API.Controllers;
 
-[Authorize]
 [ApiController]
 [Route("[controller]")]
+[Authorize(Roles = "Admin")]
 public class UsersController : ControllerBase
 {
     private readonly IUserService _userService;
