@@ -1,4 +1,6 @@
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Ntier.DataAccess;
 using Ntier.Shared.Dtos;
 using Ntier.Shared.Enums;
 
@@ -6,9 +8,16 @@ namespace Ntier.Business.Validators;
 
 public class UserDtoValidator : AbstractValidator<UserDto>
 {
-    public UserDtoValidator()
+    private readonly DataContext _context;
+
+    public UserDtoValidator(DataContext context)
     {
-        RuleFor(x => x.Email).NotEmpty().EmailAddress();
+        _context = context;
+
+        RuleFor(x => x.Email)
+            .NotEmpty()
+            .EmailAddress()
+            .MustAsync(BeUniqueEmail).WithMessage("Email is already taken.");
 
         RuleFor(x => x.Password)
             .NotEmpty()
@@ -21,5 +30,10 @@ public class UserDtoValidator : AbstractValidator<UserDto>
         RuleFor(x => x.Role)
             .Must(role => Enum.IsDefined(typeof(Role), role)) // Check if enum exists
             .WithMessage("Invalid role. Allowed values: 'User', 'Admin'.");
+    }
+
+    private async Task<bool> BeUniqueEmail(string email, CancellationToken cancellationToken)
+    {
+        return !await _context.Users.AnyAsync(u => u.Email == email, cancellationToken);
     }
 }
