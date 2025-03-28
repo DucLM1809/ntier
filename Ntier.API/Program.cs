@@ -9,6 +9,7 @@ using Ntier.API.Filter;
 using Ntier.API.Middlewares;
 using Ntier.Business;
 using Ntier.DataAccess;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -87,7 +88,26 @@ builder.Services.AddSwaggerGen(options =>
     options.OperationFilter<AuthorizeCheckOperationFilter>();
 });
 
+// Create Logger instance
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration) // Load from appsettings.json
+    .Enrich.FromLogContext() // Adds context data to logs
+    .WriteTo.Console()
+    .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day) // Logs to file
+    // .WriteTo.PostgreSQL(
+    //     builder.Configuration.GetConnectionString("DefaultConnection"),
+    //     "Logs",
+    //     needAutoCreateTable: true
+    // )
+    .CreateLogger();
+
+// Add Serilog to DI
+builder.Services.AddSingleton(Log.Logger);
+builder.Host.UseSerilog(); // Set serilog as the main logger
+
 var app = builder.Build();
+
+app.UseSerilogRequestLogging();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

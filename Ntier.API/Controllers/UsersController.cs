@@ -11,16 +11,20 @@ namespace Ntier.API.Controllers;
 [Authorize(Roles = "Admin")]
 public class UsersController : ControllerBase
 {
+    private readonly ILogger<UsersController> _logger;
     private readonly IUserService _userService;
 
-    public UsersController(IUserService userService)
+    public UsersController(ILogger<UsersController> logger, IUserService userService)
     {
         _userService = userService;
+        _logger = logger;
     }
 
     [HttpGet("")]
     public async Task<IActionResult> GetUsers([FromQuery] QueryParameters queryParameters)
     {
+        _logger.LogInformation("GetUsers API called with parameters: {QueryParameters}", queryParameters);
+
         var users = await _userService.GetFilteredUsersAsync(queryParameters);
 
         return Ok(
