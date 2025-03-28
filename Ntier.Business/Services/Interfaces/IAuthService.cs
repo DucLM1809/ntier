@@ -5,5 +5,5 @@ namespace Ntier.Business.Service;
 public interface IAuthService
 {
     Task<string> Authenticate(string username, string password);
-    Task<UserResponseDto> Register(UserDto userDto);
+    Task<UserResponseDto> Register(RegisterDto userDto);
 }

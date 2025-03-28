@@ -13,23 +13,24 @@ public class AuthController : ControllerBase
     private readonly IAuthService _authService;
     private readonly ILogger<AuthController> _logger;
     private readonly IValidator<LoginDto> _loginValidator;
-    private readonly IValidator<UserDto> _userValidator;
+    private readonly IValidator<RegisterDto> _registerValidator;
 
-    public AuthController(ILogger<AuthController> logger, IAuthService authService, IValidator<UserDto> userValidator,
+    public AuthController(ILogger<AuthController> logger, IAuthService authService,
+        IValidator<RegisterDto> registerValidator,
         IValidator<LoginDto> loginValidator)
     {
         _logger = logger;
         _authService = authService;
-        _userValidator = userValidator;
+        _registerValidator = registerValidator;
         _loginValidator = loginValidator;
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] UserDto request)
+    public async Task<IActionResult> Register([FromBody] RegisterDto request)
     {
         _logger.LogInformation("Register API called for {Email}", request.Email);
 
-        var validationResult = await _userValidator.ValidateAsync(request);
+        var validationResult = await _registerValidator.ValidateAsync(request);
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 

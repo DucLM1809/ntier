@@ -20,6 +20,7 @@ public static class DependencyInjection
         // Register FluentValidation
         services.AddValidatorsFromAssemblyContaining<UserDtoValidator>();
         services.AddValidatorsFromAssemblyContaining<LoginDtoValidator>();
+        services.AddValidatorsFromAssemblyContaining<RegisterDtoValidator>();
 
         return services;
     }

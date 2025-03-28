@@ -55,15 +55,15 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<UserResponseDto> Register(UserDto userDto)
+    public async Task<UserResponseDto> Register(RegisterDto registerDto)
     {
-        _logger.LogInformation("User registration started for {Email}", userDto.Email);
+        _logger.LogInformation("User registration started for {Email}", registerDto.Email);
 
         try
         {
-            var hashedPassword = HashPassword(userDto.Password);
+            var hashedPassword = HashPassword(registerDto.Password);
 
-            var user = _mapper.Map<User>(userDto with { Password = hashedPassword });
+            var user = _mapper.Map<User>(registerDto with { Password = hashedPassword });
 
             await _userRepository.AddAsync(user);
 
@@ -73,7 +73,7 @@ public class AuthService : IAuthService
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error occurred while registering user {Email}", userDto.Email);
+            _logger.LogError(ex, "Error occurred while registering user {Email}", registerDto.Email);
             throw;
         }
     }
