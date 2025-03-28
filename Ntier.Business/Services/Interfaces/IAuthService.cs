@@ -4,6 +4,7 @@ namespace Ntier.Business.Service;
 
 public interface IAuthService
 {
-    Task<string> Authenticate(string username, string password);
+    Task<AuthResponseDto> Authenticate(LoginDto loginDto, string? deviceInfo, string? ipAddress);
+    Task<AuthResponseDto> RefreshToken(RefreshTokenDto refreshToken);
     Task<UserResponseDto> Register(RegisterDto userDto);
 }

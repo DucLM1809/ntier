@@ -51,21 +51,35 @@ public class AuthController : ControllerBase
     {
         _logger.LogInformation("Login API called for {Email}", request.Email);
 
+        var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+        var deviceInfo = Request.Headers["User-Agent"].ToString();
+
         var validationResult = await _loginValidator.ValidateAsync(request);
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        var token = await _authService.Authenticate(request.Email, request.Password);
+        var token = await _authService.Authenticate(request, deviceInfo, ipAddress);
         if (token == null)
             return Unauthorized();
 
         return Ok(
-            new ApiResponse<string>(
+            new ApiResponse<AuthResponseDto>(
                 token,
                 true,
                 "User authenticated successfully",
                 StatusCodes.Status200OK
             )
         );
+    }
+
+    [HttpPost("refresh")]
+    public async Task<IActionResult> Refresh([FromBody] RefreshTokenDto refreshTokenDto)
+    {
+        var response = await _authService.RefreshToken(refreshTokenDto);
+        if (response == null)
+            return Unauthorized(new { message = "Invalid refresh token" });
+
+        return Ok(new ApiResponse<AuthResponseDto>(response, true, "Token refreshed successfully",
+            StatusCodes.Status200OK));
     }
 }

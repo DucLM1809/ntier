@@ -17,4 +17,5 @@ public class User : BaseEntity
     public string Password { get; set; } = null!;
 
     public int Role { get; set; }
+    public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 }
