@@ -1,7 +1,9 @@
 using AutoMapper;
 using Microsoft.Extensions.Logging;
+using Ntier.Business.Service.Extensions;
 using Ntier.DataAccess.Repository.Interfaces;
 using Ntier.Shared.Dtos;
+using Ntier.Shared.Filters;
 using Ntier.Shared.Models;
 
 namespace Ntier.Business.Service;
@@ -20,13 +22,17 @@ public class UserService : IUserService
         _mapper = mapper;
     }
 
-    public async Task<List<UserResponseDto>> GetFilteredUsersAsync(QueryParameters queryParameters)
+    public async Task<List<UserResponseDto>> GetFilteredUsersAsync(QueryParameters queryParameters,
+        UserFilter userFilter)
     {
-        _logger.LogInformation("Fetching filtered users with parameters: {QueryParameters}", queryParameters);
+        _logger.LogInformation("Fetching filtered users with parameters: {QueryParameters}, Filter: {{UserFilter}}",
+            queryParameters, userFilter);
 
         try
         {
-            var users = await _userRepository.GetFilteredAsync(null, queryParameters);
+            var filterExpression = UserFilteringExtensions.BuildFilter(userFilter);
+
+            var users = await _userRepository.GetFilteredAsync(filterExpression, queryParameters);
 
             _logger.LogInformation("Successfully retrieved {UserCount} users.", users.Count);
 
