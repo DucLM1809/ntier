@@ -9,3 +9,4 @@
 /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/refint/Ntier.Shared.dll
 /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/Ntier.Shared.pdb
 /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/ref/Ntier.Shared.dll
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.Shared/obj/Debug/net8.0/Ntier.Shared.sourcelink.json

@@ -15,3 +15,4 @@
 /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/bin/Debug/net8.0/Ntier.Shared.dll
 /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/bin/Debug/net8.0/Ntier.Shared.pdb
 /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/Ntier.Da.70B3B089.Up2Date
+/Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/obj/Debug/net8.0/Ntier.DataAccess.sourcelink.json
