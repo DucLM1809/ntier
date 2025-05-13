@@ -36,3 +36,52 @@ INSERT INTO "RefreshTokens" ("CreatedAt", "DeviceInfo", "ExpiryDate", "IpAd2025-
 2025-05-13 14:09:41.806 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/users - 200 null application/json; charset=utf-8 369.7479ms
 ded 200 in 367.2677 ms
 2025-05-13 14:09:41.806 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/users - 200 null application/json; charset=utf-8 369.7479ms
+2025-05-13 15:54:20.669 +07:00 [INF] User profile is available. Using '/Users/minhducle/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-05-13 15:54:20.786 +07:00 [INF] Now listening on: http://localhost:5147
+2025-05-13 15:54:20.788 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-13 15:54:20.788 +07:00 [INF] Hosting environment: Development
+2025-05-13 15:54:20.788 +07:00 [INF] Content root path: /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.API
+2025-05-13 15:54:21.136 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/index.html - null null
+2025-05-13 15:54:21.224 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 66.5726 ms
+2025-05-13 15:54:21.226 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/index.html - 200 null text/html;charset=utf-8 94.0137ms
+2025-05-13 15:54:21.571 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - null null
+2025-05-13 15:54:21.643 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 71.1179 ms
+2025-05-13 15:54:21.644 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 73.1187ms
+2025-05-13 15:54:26.037 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/auth/register - application/json 47
+2025-05-13 15:54:26.048 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-05-13 15:54:26.099 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Register (Ntier.API)'
+2025-05-13 15:54:26.111 +07:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`12025-05-13 15:54:26.111 +07:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsof2025-05-13 15:54:26.217 +07:00 [INF] Register API called for string
+2025-05-13 15:54:26.269 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Register (Ntier.API) in 156.3405ms
+2025-05-13 15:54:26.270 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Register (Ntier.API)'
+2025-05-13 15:54:26.287 +07:00 [INF] HTTP POST /auth/register responded 200 in 245.6177 ms
+2025-05-13 15:54:26.287 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/auth/register - 200 null application/json 250.2642ms
+responded 200 in 245.6177 ms
+2025-05-13 15:54:26.287 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/auth/register - 200 null application/json 250.2642ms
+2025-05-13 21:54:29.363 +07:00 [INF] User profile is available. Using '/Users/minhducle/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-05-13 21:54:29.481 +07:00 [INF] Now listening on: http://localhost:5147
+2025-05-13 21:54:29.482 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-13 21:54:29.483 +07:00 [INF] Hosting environment: Development
+2025-05-13 21:54:29.483 +07:00 [INF] Content root path: /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.API
+2025-05-13 21:54:30.007 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/index.html - null null
+2025-05-13 21:54:30.077 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 59.2757 ms
+2025-05-13 21:54:30.086 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/index.html - 200 null text/html;charset=utf-8 77.4536ms
+2025-05-13 21:54:30.117 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-bundle.js - null null
+2025-05-13 21:54:30.117 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-standalone-preset.js - null null
+2025-05-13 21:54:30.599 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-05-13 21:54:30.599 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-05-13 21:54:30.600 +07:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 481.9297 ms
+2025-05-13 21:54:30.600 +07:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 481.9274 ms
+2025-05-13 21:54:30.601 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 483.6338ms
+2025-05-13 212025-05-13 21:54:30.601 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 483.63382025-05-13 21:54:30.761 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - null null
+2025-05-13 21:54:30.879 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 117.7873 ms
+2025-05-13 21:54:30.879 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 118.2252ms
+2025-05-13 21:54:37.321 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/auth/register - application/json 47
+2025-05-13 21:54:37.352 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-05-13 21:54:37.400 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Register (Ntier.API)'
+2025-05-13 21:54:37.411 +07:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`12025-05-13 21:54:37.411 +07:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsof2025-05-13 21:54:37.537 +07:00 [INF] Register API called for string
+2025-05-13 21:54:37.597 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Register (Ntier.API) in 183.9518ms
+2025-05-13 21:54:37.597 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Register (Ntier.API)'
+2025-05-13 21:54:37.617 +07:00 [INF] HTTP POST /auth/register responded 400 in 270.5956 ms
+2025-05-13 21:54:37.618 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/auth/register - 400 null application/json 297.4447ms
+responded 400 in 270.5956 ms
+2025-05-13 21:54:37.618 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/auth/register - 400 null application/json 297.4447ms

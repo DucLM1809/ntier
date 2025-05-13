@@ -15,13 +15,13 @@ public class UserRepository : GenericRepository<User>, IUserRepository
 
     public async Task<User> GetUserByEmail(string email, CancellationToken cancellationToken)
     {
-        return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        return await _context.Users.FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
     }
 
-    public async Task<User> AddUser(User user)
+    public async Task<User> AddUser(User user, CancellationToken cancellationToken)
     {
         _context.Users.Add(user);
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(cancellationToken);
 
         return user;
     }

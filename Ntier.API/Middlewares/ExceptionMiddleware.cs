@@ -31,21 +31,18 @@ public class ExceptionMiddleware
 
     private static async Task HandleValidationException(HttpContext context, ValidationException ex)
     {
-        var response = new ApiResponse<object>(
-            ex.Errors.Select(error => new
-            {
-                Field = error.PropertyName,
-                Message = error.ErrorMessage
-            }),
-            false,
-            "Validation failed",
+        var result = Result.FailureResult(
+            ex.Message,
+            ex.Errors.Select(e => new { e.PropertyName, e.ErrorMessage }),
             StatusCodes.Status400BadRequest
         );
 
         context.Response.ContentType = "application/json";
+        context.Response.StatusCode = StatusCodes.Status400BadRequest;
+
         await context.Response.WriteAsync(
             JsonSerializer.Serialize(
-                response,
+                result,
                 new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
@@ -56,16 +53,18 @@ public class ExceptionMiddleware
 
     private static async Task HandleException(HttpContext context, Exception ex)
     {
-        var response = new ApiResponse<object>(
-            ex.Message,
-            false,
+        var result = Result.FailureResult(
             "An unexpected error occurred",
+            ex.Message,
             StatusCodes.Status500InternalServerError
         );
+
+        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
         context.Response.ContentType = "application/json";
+
         await context.Response.WriteAsync(
             JsonSerializer.Serialize(
-                response,
+                result,
                 new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase

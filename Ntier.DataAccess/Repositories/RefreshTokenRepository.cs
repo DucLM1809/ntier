@@ -24,22 +24,22 @@ public class RefreshTokenRepository : GenericRepository<RefreshToken>, IRefreshT
     {
         return await _context.RefreshTokens
             .Where(rt => rt.UserId == userId && !rt.IsRevoked)
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
     }
 
-    public async Task RevokeTokenAsync(RefreshToken token)
+    public async Task RevokeTokenAsync(RefreshToken token, CancellationToken cancellationToken)
     {
         token.IsRevoked = true;
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task RemoveExpiredTokensAsync()
+    public async Task RemoveExpiredTokensAsync(CancellationToken cancellationToken)
     {
         var expiredTokens = await _context.RefreshTokens
             .Where(rt => rt.ExpiryDate < DateTimeOffset.UtcNow)
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
 
         _context.RefreshTokens.RemoveRange(expiredTokens);
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(cancellationToken);
     }
 }
