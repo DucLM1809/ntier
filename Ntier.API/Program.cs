@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -101,9 +102,45 @@ Log.Logger = new LoggerConfiguration()
 builder.Services.AddSingleton(Log.Logger);
 builder.Host.UseSerilog(); // Set serilog as the main logger
 
+
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigins", policy =>
+    {
+        policy.WithOrigins("*")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+// Configure Rate Limiting
+builder.Services.AddRateLimiter(options =>
+{
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 100, // Max requests allowed
+                Window = TimeSpan.FromMinutes(1), // Time window
+                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                QueueLimit = 10 // Requests to queue before rejecting
+            }
+        )
+    );
+
+    options.OnRejected = async (context, cancellationToken) =>
+    {
+        context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+        await context.HttpContext.Response.WriteAsync("Too many requests. Please try again later.", cancellationToken);
+    };
+});
+
 var app = builder.Build();
 
 app.UseSerilogRequestLogging();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -117,6 +154,12 @@ app.UseMiddleware<ExceptionMiddleware>();
 app.UseMiddleware<JwtMiddleware>(jwtSettings["Secret"]);
 
 app.UseHttpsRedirection();
+
+// Enable CORS
+app.UseCors("AllowSpecificOrigins");
+
+// Enable Rate Limiting
+app.UseRateLimiter();
 
 app.UseAuthentication();
 app.UseAuthorization();
