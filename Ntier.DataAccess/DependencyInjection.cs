@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Ntier.DataAccess.Repositories;
+using Ntier.DataAccess.Repositories.Interfaces;
 using Ntier.DataAccess.Repository;
 using Ntier.DataAccess.Repository.Interfaces;
 
@@ -16,6 +18,8 @@ public static class DependencyInjection
         services.AddDbContext<DataContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
         );
+
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         services.AddScoped<IUserRepository, UserRepository>();

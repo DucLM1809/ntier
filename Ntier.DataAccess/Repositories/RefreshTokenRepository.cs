@@ -13,14 +13,14 @@ public class RefreshTokenRepository : GenericRepository<RefreshToken>, IRefreshT
         _context = context;
     }
 
-    public async Task<RefreshToken> GetByTokenAsync(string token)
+    public async Task<RefreshToken> GetByTokenAsync(string token, CancellationToken cancellationToken)
     {
         return await _context.RefreshTokens
             .Include(rt => rt.User)
             .FirstOrDefaultAsync(rt => rt.Token == token);
     }
 
-    public async Task<List<RefreshToken>> GetUserTokenAsync(int userId)
+    public async Task<List<RefreshToken>> GetUserTokenAsync(int userId, CancellationToken cancellationToken)
     {
         return await _context.RefreshTokens
             .Where(rt => rt.UserId == userId && !rt.IsRevoked)

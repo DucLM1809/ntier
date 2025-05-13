@@ -6,5 +6,5 @@ namespace Ntier.Business.Service;
 
 public interface IUserService
 {
-    Task<List<UserResponseDto>> GetFilteredUsersAsync(QueryParameters queryParameters, UserFilter userFilter);
+    Task<List<UserResponseDto>> GetFilteredUsersAsync(QueryParameters queryParameters, UserFilter userFilter, CancellationToken cancellationToken);
 }

@@ -5,11 +5,11 @@ namespace Ntier.DataAccess.Repository.Interfaces;
 
 public interface IGenericRepository<T> where T : BaseEntity
 {
-    IQueryable<T> GetAll();
-    IQueryable<T> Find(Expression<Func<T, bool>> predicate);
-    Task<List<T>> GetFilteredAsync(Expression<Func<T, bool>>? predicate, QueryParameters queryParams);
-    Task<T> GetByIdAsync(Guid id);
-    Task AddAsync(T entity);
-    Task UpdateAsync(T entity);
-    Task DeleteAsync(Guid id);
+    IQueryable<T> GetAll(CancellationToken cancellationToken);
+    IQueryable<T> Find(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
+    Task<List<T>> GetFilteredAsync(Expression<Func<T, bool>>? predicate, QueryParameters queryParams, CancellationToken cancellationToken);
+    Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task AddAsync(T entity, CancellationToken cancellationToken);
+    Task UpdateAsync(T entity, CancellationToken cancellationToken);
+    Task DeleteAsync(Guid id, CancellationToken cancellationToken);
 }

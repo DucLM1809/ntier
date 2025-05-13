@@ -2,7 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
-using Ntier.DataAccess.Repository.Interfaces;
+using Ntier.DataAccess.Repositories.Interfaces;
 using Ntier.Shared.Dtos;
 using Ntier.Shared.Models;
 
@@ -13,21 +13,19 @@ public class AuthService : IAuthService
     private readonly IJwtService _jwtService;
     private readonly ILogger<AuthService> _logger;
     private readonly IMapper _mapper;
-    private readonly IRefreshTokenRepository _refreshTokenRepository;
-    private readonly IUserRepository _userRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
     public AuthService(ILogger<AuthService> logger, IJwtService jwtService, IMapper mapper,
-        IUserRepository userRepository, IRefreshTokenRepository refreshTokenRepository
+        IUnitOfWork unitOfWork
     )
     {
-        _userRepository = userRepository;
+        _unitOfWork = unitOfWork;
         _jwtService = jwtService;
         _mapper = mapper;
         _logger = logger;
-        _refreshTokenRepository = refreshTokenRepository;
     }
 
-    public async Task<UserResponseDto> Register(RegisterDto registerDto)
+    public async Task<UserResponseDto> Register(RegisterDto registerDto, CancellationToken cancellationToken)
     {
         _logger.LogInformation("User registration started for {Email}", registerDto.Email);
 
@@ -37,7 +35,7 @@ public class AuthService : IAuthService
 
             var user = _mapper.Map<User>(registerDto with { Password = hashedPassword });
 
-            await _userRepository.AddAsync(user);
+            await _unitOfWork.Users.AddAsync(user, cancellationToken);
 
             _logger.LogInformation("User {Email} registered successfully with ID {UserId}", user.Email, user.Id);
 
@@ -50,13 +48,13 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<AuthResponseDto> Authenticate(LoginDto loginDto, string? deviceInfo, string? ipAddress)
+    public async Task<AuthResponseDto> Authenticate(LoginDto loginDto, string? deviceInfo, string? ipAddress, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Authentication attempt for email: {Email}", loginDto.Email);
 
         try
         {
-            var user = await _userRepository.GetUserByEmail(loginDto.Email);
+            var user = await _unitOfWork.Users.GetUserByEmail(loginDto.Email, cancellationToken);
 
             if (user == null)
             {
@@ -84,7 +82,7 @@ public class AuthService : IAuthService
                 UserId = user.Id
             };
 
-            await _refreshTokenRepository.AddAsync(refreshTokenEntity);
+            await _unitOfWork.RefreshTokens.AddAsync(refreshTokenEntity, cancellationToken);
 
             _logger.LogInformation("Authentication succeeded for email: {Email}. Token generated.", loginDto.Email);
 
@@ -98,13 +96,13 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<AuthResponseDto> RefreshToken(RefreshTokenDto refreshTokenDto)
+    public async Task<AuthResponseDto> RefreshToken(RefreshTokenDto refreshTokenDto, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Attempting to refresh token for {RefreshToken}", refreshTokenDto.RefreshToken);
 
         try
         {
-            var storedToken = await _refreshTokenRepository.GetByTokenAsync(refreshTokenDto.RefreshToken);
+            var storedToken = await _unitOfWork.RefreshTokens.GetByTokenAsync(refreshTokenDto.RefreshToken, cancellationToken);
             if (storedToken == null)
             {
                 _logger.LogWarning("Refresh token not found: {RefreshToken}", refreshTokenDto.RefreshToken);
@@ -131,7 +129,7 @@ public class AuthService : IAuthService
             storedToken.Token = newRefreshToken;
             storedToken.ExpiryDate = DateTime.UtcNow.AddDays(7);
             storedToken.IsRevoked = false;
-            await _refreshTokenRepository.UpdateAsync(storedToken);
+            await _unitOfWork.RefreshTokens.UpdateAsync(storedToken, cancellationToken);
 
             _logger.LogInformation("Refresh token successfully generated for user {UserId}", user.Id);
 

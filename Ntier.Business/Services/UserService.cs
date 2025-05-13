@@ -1,7 +1,7 @@
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using Ntier.Business.Service.Extensions;
-using Ntier.DataAccess.Repository.Interfaces;
+using Ntier.DataAccess.Repositories.Interfaces;
 using Ntier.Shared.Dtos;
 using Ntier.Shared.Filters;
 using Ntier.Shared.Models;
@@ -12,18 +12,17 @@ public class UserService : IUserService
 {
     private readonly ILogger<UserService> _logger;
     private readonly IMapper _mapper;
-    private readonly IUserRepository _userRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public UserService(ILogger<UserService> logger, IUserRepository userRepository, IJwtService jwtService,
-        IMapper mapper)
+    public UserService(ILogger<UserService> logger, IUnitOfWork unitOfWork, IMapper mapper)
     {
         _logger = logger;
-        _userRepository = userRepository;
+        _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
 
     public async Task<List<UserResponseDto>> GetFilteredUsersAsync(QueryParameters queryParameters,
-        UserFilter userFilter)
+        UserFilter userFilter, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Fetching filtered users with parameters: {QueryParameters}, Filter: {{UserFilter}}",
             queryParameters, userFilter);
@@ -32,7 +31,7 @@ public class UserService : IUserService
         {
             var filterExpression = UserFilteringExtensions.BuildFilter(userFilter);
 
-            var users = await _userRepository.GetFilteredAsync(filterExpression, queryParameters);
+            var users = await _unitOfWork.Users.GetFilteredAsync(filterExpression, queryParameters, cancellationToken);
 
             _logger.LogInformation("Successfully retrieved {UserCount} users.", users.Count);
 

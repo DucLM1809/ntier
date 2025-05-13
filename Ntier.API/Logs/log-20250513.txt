@@ -1,0 +1,38 @@
+2025-05-13 14:07:53.095 +07:00 [INF] User profile is available. Using '/Users/minhducle/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-05-13 14:07:53.199 +07:00 [INF] Now listening on: http://localhost:5147
+2025-05-13 14:07:53.201 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-13 14:07:53.201 +07:00 [INF] Hosting environment: Development
+2025-05-13 14:07:53.201 +07:00 [INF] Content root path: /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.API
+2025-05-13 14:07:53.541 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/index.html - null null
+2025-05-13 14:07:53.655 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 87.3287 ms
+2025-05-13 14:07:53.658 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/index.html - 200 null text/html;charset=utf-8 119.6723ms
+2025-05-13 14:07:53.732 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-bundle.js - null null
+2025-05-13 14:07:54.062 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-05-13 14:07:54.063 +07:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 329.8314 ms
+2025-05-13 14:07:54.064 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 332.6795ms
+2025-05-13 14:07:54.272 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - null null
+2025-05-13 14:07:54.367 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 94.5963 ms
+2025-05-13 14:07:54.370 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 97.8194ms
+2025-05-13 14:09:26.598 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/auth/login - application/json 66
+2025-05-13 14:09:26.609 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-05-13 14:09:26.655 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-13 14:09:26.683 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-13 14:09:26.683 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-13 14:09:26.845 +07:00 [INF] Login API called for minhductxqt@gmail.com
+2025-05-13 14:09:26.851 +07:00 [INF] Authentication attempt for email: minhductxqt@gmail.com
+2025-05-13 14:09:27.302 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Emai2025-05-13 14:09:27.302 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__email_0='?'], Comma2025-05-13 14:09:27.427 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?' (DbType = DateTime), @p3='?', @p4='?' (DbType = Bo2025-05-13 14:09:27.427 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?' (DbType = DateTime), @p3='?', @p4='?' (DbType = Boolean), @p5='?', @p6='?' (DbType = DateTime), @p7='?' (DbType = Int32), @p9='?' (DbType = Int32), @p8='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "RefreshTokens" ("CreatedAt", "DeviceInfo", "ExpiryDate", "IpAd2025-05-13 14:09:27.442 +07:00 [INF] Authentication succeeded for email: minhductxqt@gmail.com. Token generated.
+2025-05-13 14:09:27.444 +07:00 [INF] Executing OkObjectResult, writing value of type 'Ntier.Shared.Models.ApiResponse`1[[Ntier.Shared.Dtos.AuthResponseDto, Ntier.Shared, Ve2025-05-13 14:09:27.444 +07:00 [INF] Executing OkObjectR2025-05-13 14:09:27.451 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 766.2676ms
+2025-05-13 14:09:27.451 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-13 14:09:27.452 +07:00 [INF] HTTP POST /auth/login responded 200 in 850.3045 ms
+2025-05-13 14:09:27.454 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/auth/login - 200 null application/json; charset=utf-8 856.0153ms
+2025-05-13 14:09:41.437 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/users - null null
+2025-05-13 14:09:41.493 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.UsersController.GetUsers (Ntier.API)'
+2025-05-13 14:09:41.510 +07:00 [INF] Route matched with {action = "GetUsers", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`2025-05-13 14:09:41.510 +07:00 [INF] Route matched with {action = "GetUsers", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUsers2025-05-13 14:09:41.519 +07:00 [INF] GetUsers API called with parameters: Ntier.Shared.Models.QueryParameters, Filter: {UserFilter}
+2025-05-13 14:09:41.520 +07:00 [INF] Fetching filtered users with parameters: Ntier.Shared.Models.QueryParameters, Filter: {UserFilter}
+2025-05-13 14:09:41.548 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'D2025-05-13 14:09:41.548 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredict2025-05-13 14:09:41.550 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'D2025-05-13 14:09:41.550 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredict2025-05-13 14:09:41.749 +07:00 [INF] Executed DbCommand (121ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout2025-05-13 14:09:41.749 +07:00 [INF] Executed DbCommand (121ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32025-05-13 14:09:41.753 +07:00 [INF] Successfully retrieved 3 users.
+2025-05-13 14:09:41.801 +07:00 [INF] Executing OkObjectResult, writing value of type 'Ntier.Shared.Models.ApiResponse`1[[System.Collections.Generic.List`1[[Ntier.Shared.Dto2025-05-13 14:09:41.801 +07:00 [INF] Executing OkObjectResult, writing value of type 'Ntier.Shared.Models.ApiResponse`1[[System.Collections.Generic.List`1[[Ntier.Shared.Dtos.UserRespon2025-05-13 14:09:41.805 +07:00 [INF] Executed action Ntier.API.Controllers.UsersController.GetUsers (Ntier.API) in 295.271ms
+2025-05-13 14:09:41.806 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.UsersController.GetUsers (Ntier.API)'
+2025-05-13 14:09:41.806 +07:00 [INF] HTTP GET /users responded 200 in 367.2677 ms
+2025-05-13 14:09:41.806 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/users - 200 null application/json; charset=utf-8 369.7479ms
+ded 200 in 367.2677 ms
+2025-05-13 14:09:41.806 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/users - 200 null application/json; charset=utf-8 369.7479ms

@@ -95,11 +95,6 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext() // Adds context data to logs
     .WriteTo.Console()
     .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day) // Logs to file
-    // .WriteTo.PostgreSQL(
-    //     builder.Configuration.GetConnectionString("DefaultConnection"),
-    //     "Logs",
-    //     needAutoCreateTable: true
-    // )
     .CreateLogger();
 
 // Add Serilog to DI

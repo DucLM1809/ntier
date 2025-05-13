@@ -13,7 +13,7 @@ public class UserRepository : GenericRepository<User>, IUserRepository
         _context = context;
     }
 
-    public async Task<User> GetUserByEmail(string email)
+    public async Task<User> GetUserByEmail(string email, CancellationToken cancellationToken)
     {
         return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }

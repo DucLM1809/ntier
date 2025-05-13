@@ -23,12 +23,12 @@ public class UsersController : ControllerBase
 
     [HttpGet("")]
     public async Task<IActionResult> GetUsers([FromQuery] QueryParameters queryParameters,
-        [FromQuery] UserFilter userFilter)
+        [FromQuery] UserFilter userFilter, CancellationToken cancellationToken)
     {
         _logger.LogInformation("GetUsers API called with parameters: {QueryParameters}, Filter: {{UserFilter}}",
-            queryParameters, userFilter);
+            queryParameters, userFilter, cancellationToken);
 
-        var users = await _userService.GetFilteredUsersAsync(queryParameters, userFilter);
+        var users = await _userService.GetFilteredUsersAsync(queryParameters, userFilter, cancellationToken);
 
         return Ok(
             new ApiResponse<List<UserResponseDto>>(

@@ -26,7 +26,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterDto request)
+    public async Task<IActionResult> Register([FromBody] RegisterDto request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Register API called for {Email}", request.Email);
 
@@ -34,7 +34,7 @@ public class AuthController : ControllerBase
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        var user = await _authService.Register(request);
+        var user = await _authService.Register(request, cancellationToken);
 
         return Ok(
             new ApiResponse<UserResponseDto>(
@@ -47,7 +47,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginDto request)
+    public async Task<IActionResult> Login([FromBody] LoginDto request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Login API called for {Email}", request.Email);
 
@@ -58,7 +58,7 @@ public class AuthController : ControllerBase
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        var token = await _authService.Authenticate(request, deviceInfo, ipAddress);
+        var token = await _authService.Authenticate(request, deviceInfo, ipAddress, cancellationToken);
         if (token == null)
             return Unauthorized();
 
@@ -73,9 +73,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("refresh")]
-    public async Task<IActionResult> Refresh([FromBody] RefreshTokenDto refreshTokenDto)
+    public async Task<IActionResult> Refresh([FromBody] RefreshTokenDto refreshTokenDto, CancellationToken cancellationToken)
     {
-        var response = await _authService.RefreshToken(refreshTokenDto);
+        var response = await _authService.RefreshToken(refreshTokenDto, cancellationToken);
         if (response == null)
             return Unauthorized(new { message = "Invalid refresh token" });
 
