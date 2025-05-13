@@ -143,18 +143,18 @@ public class AuthService : IAuthService
         }
     }
 
-    private string HashPassword(string password)
+    private static string HashPassword(string password)
     {
         var sha256 = SHA256.Create();
         return Convert.ToBase64String(sha256.ComputeHash(Encoding.UTF8.GetBytes(password)));
     }
 
-    private bool VerifyPassword(string password, string hashedPassword)
+    private static bool VerifyPassword(string password, string hashedPassword)
     {
         return HashPassword(password) == hashedPassword;
     }
 
-    private string GenerateRefreshToken()
+    private static string GenerateRefreshToken()
     {
         var randomNumber = new byte[32];
         using var rng = RandomNumberGenerator.Create();
