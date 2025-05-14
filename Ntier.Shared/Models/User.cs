@@ -18,4 +18,15 @@ public class User : BaseEntity
 
     public int Role { get; set; }
     public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
+
+    public DateTimeOffset? DateOfBirth { get; set; } = null;
+
+    [Required]
+    public string Name { get; set; } = null!;
+
+    public string? Avatar { get; set; } = null;
+
+    public float? Height { get; set; } = null;
+
+    public int Gender { get; set; } = 0;
 }
