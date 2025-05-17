@@ -1,0 +1,255 @@
+2025-05-15 11:04:52.317 +07:00 [INF] User profile is available. Using '/Users/minhducle/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-05-15 11:04:52.386 +07:00 [INF] Now listening on: http://localhost:5147
+2025-05-15 11:04:52.387 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-15 11:04:52.388 +07:00 [INF] Hosting environment: Development
+2025-05-15 11:04:52.388 +07:00 [INF] Content root path: /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.API
+2025-05-15 11:04:52.729 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/index.html - null null
+2025-05-15 11:04:53.014 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 262.1628 ms
+2025-05-15 11:04:53.018 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/index.html - 200 null text/html;charset=utf-8 288.7928ms
+2025-05-15 11:04:53.059 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-bundle.js - null null
+2025-05-15 11:04:53.059 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-standalone-preset.js - null null
+2025-05-15 11:04:53.061 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui.css - null null
+2025-05-15 11:04:53.097 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-05-15 11:04:53.098 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-05-15 11:04:53.098 +07:00 [INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 39.2370 ms
+2025-05-15 11:04:53.098 +07:00 [INF] HTTP GET /swagger/swagger-ui.css responded 200 in 36.5866 ms
+2025-05-15 11:04:53.101 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 41.468ms
+2025-05-15 11:04:53.103 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui.css - 200 143943 text/css 41.2381ms
+2025-05-15 11:04:53.115 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-05-15 11:04:53.115 +07:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 56.3820 ms
+2025-05-15 11:04:53.116 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 58.4405ms
+2025-05-15 11:04:53.338 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - null null
+2025-05-15 11:04:53.458 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 118.0419 ms
+2025-05-15 11:04:53.458 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 120.0206ms
+2025-05-15 11:05:16.337 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 66
+2025-05-15 11:05:16.347 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-05-15 11:05:16.348 +07:00 [INF] CORS policy execution successful.
+2025-05-15 11:05:16.385 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:05:16.397 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:05:16.397 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:05:16.517 +07:00 [INF] Login API called for minhductxqt@gmail.com
+2025-05-15 11:05:16.522 +07:00 [INF] Authentication attempt for email: minhductxqt@gmail.com
+2025-05-15 11:05:16.897 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."Created2025-05-15 11:05:16.897 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."CreatedAt", u."DateOfBirth", u."Em2025-05-15 11:05:16.982 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?' (DbType = DateTime), @p3='?', @p4='?' (DbType = Boo2025-05-15 11:05:16.982 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?' (DbType = DateTime), @p3='?', @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?', @p7='?' (DbType = DateTime), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "RefreshTokens" ("CreatedA2025-05-15 11:05:16.991 +07:00 [INF] Authentication succeeded for email: minhductxqt@gmail.com. Token generated.
+2025-05-15 11:05:16.993 +07:00 [INF] Executing OkObjectResult, writing value of type 'Ntier.Shared.Models.ApiResponse`1[[Ntier.Shared.Dtos.AuthResponseDto, Ntier.Shared, Ve2025-05-15 11:05:16.993 +07:00 [INF] Executing OkObjectR2025-05-15 11:05:16.999 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 599.7612ms
+2025-05-15 11:05:16.999 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:05:17.000 +07:00 [INF] HTTP POST /api/v1/auth/login responded 200 in 657.8094 ms
+2025-05-15 11:05:17.002 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 200 null application/json; charset=utf-8 664.7962ms
+7.8094 ms
+2025-05-15 11:05:17.002 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 200 null application/json; charset=utf-8 664.7962ms
+2025-05-15 11:21:55.794 +07:00 [INF] User profile is available. Using '/Users/minhducle/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-05-15 11:21:55.855 +07:00 [INF] Now listening on: http://localhost:5147
+2025-05-15 11:21:55.857 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-15 11:21:55.857 +07:00 [INF] Hosting environment: Development
+2025-05-15 11:21:55.857 +07:00 [INF] Content root path: /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.API
+2025-05-15 11:21:56.058 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/index.html - null null
+2025-05-15 11:21:56.140 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 61.5561 ms
+2025-05-15 11:21:56.143 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/index.html - 200 null text/html;charset=utf-8 85.646ms
+2025-05-15 11:21:56.434 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - null null
+2025-05-15 11:21:56.538 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 104.1350 ms
+2025-05-15 11:21:56.538 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 104.9958ms
+2025-05-15 11:21:59.947 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/v1/auth/login - application/json 64
+2025-05-15 11:21:59.954 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-05-15 11:21:59.981 +07:00 [INF] HTTP POST /v1/auth/login responded 404 in 32.8228 ms
+2025-05-15 11:21:59.981 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/v1/auth/login - 404 0 null 33.7805ms
+2025-05-15 11:21:59.982 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST http://localhost:5147/2025-05-15 11:21:59.982 +07:00 [INF] Requ2025-05-15 11:22:04.819 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/v1/auth/login - application/json 64
+2025-05-15 11:22:04.822 +07:00 [INF] HTTP POST /v1/auth/login responded 404 in 2.1280 ms
+2025-05-15 11:22:04.823 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/v1/auth/login - 404 0 null 3.9975ms
+2025-05-15 11:22:04.823 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST http://localhost:5147/2025-05-15 11:22:04.823 +07:00 [INF] Requ2025-05-15 11:22:19.473 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 47
+2025-05-15 11:22:19.478 +07:00 [INF] CORS policy execution successful.
+2025-05-15 11:22:19.482 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:22:19.503 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:22:19.503 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:22:19.617 +07:00 [INF] Login API called for string
+2025-05-15 11:22:19.627 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 122.3644ms
+2025-05-15 11:22:19.627 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:22:19.631 +07:00 [INF] HTTP POST /api/v1/auth/login responded 400 in 153.5336 ms
+2025-05-15 11:22:19.632 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 400 null application/json 158.7958ms
+2025-05-15 11:22:33.358 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 64
+2025-05-15 11:22:33.361 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:22:33.362 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:22:33.362 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:22:33.372 +07:00 [INF] Login API called for admin@gmail.com
+2025-05-15 11:22:33.373 +07:00 [INF] Authentication attempt for email: admin@gmail.com
+2025-05-15 11:22:33.754 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."Created2025-05-15 11:22:33.754 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."CreatedAt", u."DateOfBirth", u."Em2025-05-15 11:22:33.759 +07:00 [ERR] An error occurred during authentication for email: admin@gmail.com
+System.Collections.Generic.KeyNotFoundException: User with email adm2025-05-15 11:22:33.759 +07:00 [ERR] An error occurred during authentication for email: admin@gmail.com
+System.Collections.Generic.KeyNotFoundException: User with email admin@gmail.com not found.
+   at Ntier.DataAccess.Repository.UserRepository.GetUserByEmail(String email, CancellationToken cancellationToken) in /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/Repositories/UserRepository.cs:line 18
+   at Ntier.Business.Service.AuthService.Authenticate(LoginDto log2025-05-15 11:22:33.765 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 402.889ms
+2025-05-15 11:22:33.765 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:22:33.767 +07:00 [ERR] HTTP POST /api/v1/auth/login responded 500 in 406.2841 ms
+2025-05-15 11:22:33.769 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 500 null application/json 410.9337ms
+2025-05-15 11:24:12.725 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 47
+2025-05-15 11:24:12.725 +07:00 [INF] CORS policy execution successful.
+2025-05-15 11:24:12.726 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:24:12.726 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:24:12.726 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:24:12.735 +07:00 [INF] Login API called for string
+2025-05-15 11:24:12.736 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 9.7292ms
+2025-05-15 11:24:12.736 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:24:12.737 +07:00 [INF] HTTP POST /api/v1/auth/login responded 400 in 12.1750 ms
+2025-05-15 11:24:12.738 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 400 null application/json 12.9061ms
+2025-05-15 11:25:01.545 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 64
+2025-05-15 11:25:01.548 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:25:01.549 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:25:01.549 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:25:01.553 +07:00 [INF] Login API called for admin@gmail.com
+2025-05-15 11:25:01.555 +07:00 [INF] Authentication attempt for email: admin@gmail.com
+2025-05-15 11:25:01.583 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."Created2025-05-15 11:25:01.583 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."CreatedAt", u."DateOfBirth", u."Em2025-05-15 11:25:01.584 +07:00 [ERR] An error occurred during authentication for email: admin@gmail.com
+System.Collections.Generic.KeyNotFoundException: User with email adm2025-05-15 11:25:01.584 +07:00 [ERR] An error occurred during authentication for email: admin@gmail.com
+System.Collections.Generic.KeyNotFoundException: User with email admin@gmail.com not found.
+   at Ntier.DataAccess.Repository.UserRepository.GetUserByEmail(String email, CancellationToken cancellationToken) in /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/Repositories/UserRepository.cs:line 18
+   at Ntier.Business.Service.AuthService.Authenticate(LoginDto log2025-05-15 11:25:01.586 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 36.7604ms
+2025-05-15 11:25:01.586 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:25:01.587 +07:00 [ERR] HTTP POST /api/v1/auth/login responded 500 in 40.4756 ms
+2025-05-15 11:25:01.587 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 500 null application/json 42.1353ms
+2025-05-15 11:25:25.747 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 51
+2025-05-15 11:25:25.749 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:25:25.749 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:25:25.749 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:25:25.751 +07:00 [INF] Login API called for string
+2025-05-15 11:25:25.752 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 2.8327ms
+2025-05-15 11:25:25.752 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:25:25.753 +07:00 [INF] HTTP POST /api/v1/auth/login responded 400 in 5.3310 ms
+2025-05-15 11:25:25.754 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 400 null application/json 6.2697ms
+2025-05-15 11:27:33.048 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 51
+2025-05-15 11:27:33.050 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:27:33.050 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:27:33.050 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:27:33.052 +07:00 [INF] Login API called for string
+2025-05-15 11:27:33.053 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 2.253ms
+2025-05-15 11:27:33.053 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:27:33.053 +07:00 [INF] HTTP POST /api/v1/auth/login responded 400 in 3.7834 ms
+2025-05-15 11:27:33.053 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 400 null application/json 5.4055ms
+responded 400 in 3.7834 ms
+2025-05-15 11:27:33.053 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 400 null application/json 5.4055ms
+2025-05-15 11:29:36.630 +07:00 [INF] User profile is available. Using '/Users/minhducle/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-05-15 11:29:36.687 +07:00 [INF] Now listening on: http://localhost:5147
+2025-05-15 11:29:36.688 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-15 11:29:36.689 +07:00 [INF] Hosting environment: Development
+2025-05-15 11:29:36.689 +07:00 [INF] Content root path: /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.API
+2025-05-15 11:29:36.876 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/index.html - null null
+2025-05-15 11:29:36.965 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 66.9967 ms
+2025-05-15 11:29:36.970 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/index.html - 200 null text/html;charset=utf-8 93.9114ms
+2025-05-15 11:29:37.239 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - null null
+2025-05-15 11:29:37.313 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 74.3177 ms
+2025-05-15 11:29:37.314 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 75.1705ms
+2025-05-15 11:29:48.370 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 51
+2025-05-15 11:29:48.374 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-05-15 11:29:48.393 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:29:48.401 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:29:48.401 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:29:48.503 +07:00 [INF] Login API called for string
+2025-05-15 11:29:48.514 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 110.9535ms
+2025-05-15 11:29:48.514 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:29:48.518 +07:00 [INF] HTTP POST /api/v1/auth/login responded 400 in 145.4581 ms
+2025-05-15 11:29:48.518 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 400 null application/json 148.0146ms
+2025-05-15 11:29:58.863 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 64
+2025-05-15 11:29:58.865 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:29:58.865 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:29:58.865 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 11:29:58.870 +07:00 [INF] Login API called for admin@gmail.com
+2025-05-15 11:29:58.870 +07:00 [INF] Authentication attempt for email: admin@gmail.com
+2025-05-15 11:29:59.249 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."Created2025-05-15 11:29:59.249 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."CreatedAt", u."DateOfBirth", u."Em2025-05-15 11:29:59.254 +07:00 [ERR] An error occurred during authentication for email: admin@gmail.com
+System.Collections.Generic.KeyNotFoundException: User with email adm2025-05-15 11:29:59.254 +07:00 [ERR] An error occurred during authentication for email: admin@gmail.com
+System.Collections.Generic.KeyNotFoundException: User with email admin@gmail.com not found.
+   at Ntier.DataAccess.Repository.UserRepository.GetUserByEmail(String email, CancellationToken cancellationToken) in /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.DataAccess/Repositories/UserRepository.cs:line 18
+   at Ntier.Business.Service.AuthService.Authenticate(LoginDto log2025-05-15 11:29:59.259 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 393.9031ms
+2025-05-15 11:29:59.259 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 11:29:59.261 +07:00 [ERR] HTTP POST /api/v1/auth/login responded 500 in 397.2944 ms
+2025-05-15 11:29:59.263 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 500 null application/json 399.8841ms
+onded 500 in 397.2944 ms
+2025-05-15 11:29:59.263 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 500 null application/json 399.8841ms
+2025-05-15 13:44:09.806 +07:00 [INF] User profile is available. Using '/Users/minhducle/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-05-15 13:44:09.870 +07:00 [INF] Now listening on: http://localhost:5147
+2025-05-15 13:44:09.872 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-15 13:44:09.873 +07:00 [INF] Hosting environment: Development
+2025-05-15 13:44:09.873 +07:00 [INF] Content root path: /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.API
+2025-05-15 13:44:10.050 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/index.html - null null
+2025-05-15 13:44:10.120 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 59.3229 ms
+2025-05-15 13:44:10.123 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/index.html - 200 null text/html;charset=utf-8 75.3271ms
+2025-05-15 13:44:10.402 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - null null
+2025-05-15 13:44:10.503 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 99.6972 ms
+2025-05-15 13:44:10.503 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 101.4198ms
+2025-05-15 13:44:23.305 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 55
+2025-05-15 13:44:23.309 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-05-15 13:44:23.328 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 13:44:23.336 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 13:44:23.336 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 13:44:23.439 +07:00 [INF] Login API called for string
+2025-05-15 13:44:23.450 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 112.5777ms
+2025-05-15 13:44:23.450 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 13:44:23.454 +07:00 [INF] HTTP POST /api/v1/auth/login responded 400 in 146.8630 ms
+2025-05-15 13:44:23.454 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 400 null application/json 149.494ms
+2025-05-15 13:45:07.540 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 64
+2025-05-15 13:45:07.544 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 13:45:07.545 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 13:45:07.545 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 13:45:07.551 +07:00 [INF] Login API called for admin@gmail.com
+2025-05-15 13:45:07.552 +07:00 [INF] Authentication attempt for email: admin@gmail.com
+2025-05-15 13:45:07.929 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."Created2025-05-15 13:45:07.929 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."CreatedAt", u."DateOfBirth", u."Em2025-05-15 13:45:07.934 +07:00 [WRN] Authentication failed for email: admin@gmail.com. User not found.
+2025-05-15 13:45:07.937 +07:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-05-15 13:45:07.945 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 400.5011ms
+2025-05-15 13:45:07.945 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 13:45:07.947 +07:00 [INF] HTTP POST /api/v1/auth/login responded 401 in 404.3429 ms
+2025-05-15 13:45:07.948 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 401 null application/problem+json; charset=utf-8 408.5615ms
+2025-05-15 13:45:56.000 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 64
+2025-05-15 13:45:56.003 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 13:45:56.003 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 13:45:56.003 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 13:45:56.006 +07:00 [INF] Login API called for admin@gmail.com
+2025-05-15 13:45:56.006 +07:00 [INF] Authentication attempt for email: admin@gmail.com
+2025-05-15 13:45:56.029 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."Created2025-05-15 13:45:56.029 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."CreatedAt", u."DateOfBirth", u."Em2025-05-15 13:45:56.029 +07:00 [WRN] Authentication failed for email: admin@gmail.com. User not found.
+2025-05-15 13:45:56.029 +07:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-05-15 13:45:56.030 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 26.6297ms
+2025-05-15 13:45:56.030 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 13:45:56.030 +07:00 [INF] HTTP POST /api/v1/auth/login responded 401 in 28.5885 ms
+2025-05-15 13:45:56.030 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 401 null application/problem+json; charset=utf-8 29.8164ms
+ms
+2025-05-15 13:45:56.030 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 401 null application/problem+json; charset=utf-8 29.8164ms
+2025-05-15 13:46:00.587 +07:00 [INF] User profile is available. Using '/Users/minhducle/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-05-15 13:46:00.653 +07:00 [INF] Now listening on: http://localhost:5147
+2025-05-15 13:46:00.654 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-15 13:46:00.655 +07:00 [INF] Hosting environment: Development
+2025-05-15 13:46:00.655 +07:00 [INF] Content root path: /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.API
+2025-05-15 13:46:00.847 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/index.html - null null
+2025-05-15 13:46:00.923 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 52.5088 ms
+2025-05-15 13:46:00.926 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/index.html - 200 null text/html;charset=utf-8 81.3311ms
+2025-05-15 13:46:01.270 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - null null
+2025-05-15 13:46:01.350 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 79.5242 ms
+2025-05-15 13:46:01.350 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 80.462ms
+2025-05-15 13:46:03.497 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 64
+2025-05-15 13:46:03.500 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-05-15 13:46:03.513 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 13:46:03.521 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 13:46:03.521 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 13:46:03.658 +07:00 [INF] Login API called for admin@gmail.com
+2025-05-15 13:46:03.680 +07:00 [INF] Authentication attempt for email: admin@gmail.com
+2025-05-15 13:46:04.096 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."Created2025-05-15 13:46:04.096 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."CreatedAt", u."DateOfBirth", u."Em2025-05-15 13:46:04.101 +07:00 [WRN] Authentication failed for email: admin@gmail.com. User not found.
+2025-05-15 13:46:04.101 +07:00 [ERR] An error occurred during authentication for email: admin@gmail.com
+Microsoft.AspNetCore.Http.BadHttpRequestException: User not found.
+ 2025-05-15 13:46:04.101 +07:00 [ERR] An error occurred during authentication for email: admin@gmail.com
+Microsoft.AspNetCore.Http.BadHttpRequestException: User not found.
+   at Ntier.Business.Service.AuthService.Authenticate(LoginDto log2025-05-15 13:46:04.106 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 583.1262ms
+2025-05-15 13:46:04.106 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 13:46:04.109 +07:00 [ERR] HTTP POST /api/v1/auth/login responded 500 in 610.8686 ms
+2025-05-15 13:46:04.111 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 500 null application/json 613.9412ms
+onded 500 in 610.8686 ms
+2025-05-15 13:46:04.111 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 500 null application/json 613.9412ms
+2025-05-15 13:46:54.071 +07:00 [INF] User profile is available. Using '/Users/minhducle/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-05-15 13:46:54.129 +07:00 [INF] Now listening on: http://localhost:5147
+2025-05-15 13:46:54.130 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-15 13:46:54.131 +07:00 [INF] Hosting environment: Development
+2025-05-15 13:46:54.131 +07:00 [INF] Content root path: /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.API
+2025-05-15 13:46:54.332 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/index.html - null null
+2025-05-15 13:46:54.402 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 55.2691 ms
+2025-05-15 13:46:54.404 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/index.html - 200 null text/html;charset=utf-8 72.3975ms
+2025-05-15 13:46:54.673 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - null null
+2025-05-15 13:46:54.754 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 81.2513 ms
+2025-05-15 13:46:54.755 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 82.5321ms
+2025-05-15 13:46:58.280 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 64
+2025-05-15 13:46:58.286 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-05-15 13:46:58.298 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 13:46:58.306 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 13:46:58.306 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-15 13:46:58.393 +07:00 [INF] Login API called for admin@gmail.com
+2025-05-15 13:46:58.397 +07:00 [INF] Authentication attempt for email: admin@gmail.com
+2025-05-15 13:46:58.752 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."Created2025-05-15 13:46:58.752 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."CreatedAt", u."DateOfBirth", u."Em2025-05-15 13:46:58.757 +07:00 [WRN] Authentication failed for email: admin@gmail.com. User not found.
+2025-05-15 13:46:58.757 +07:00 [ERR] An error occurred during authentication for email: admin@gmail.com
+Microsoft.AspNetCore.Http.BadHttpRequestException: User not found.
+ 2025-05-15 13:46:58.757 +07:00 [ERR] An error occurred during authentication for email: admin@gmail.com
+Microsoft.AspNetCore.Http.BadHttpRequestException: User not found.
+   at Ntier.Business.Service.AuthService.Authenticate(LoginDto log2025-05-15 13:46:58.762 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 454.839ms
+2025-05-15 13:46:58.762 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-15 13:46:58.767 +07:00 [ERR] HTTP POST /api/v1/auth/login responded 500 in 484.3975 ms
+2025-05-15 13:46:58.769 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 500 null application/json 488.982ms
+ponded 500 in 484.3975 ms
+2025-05-15 13:46:58.769 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 500 null application/json 488.982ms

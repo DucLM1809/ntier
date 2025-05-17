@@ -41,12 +41,13 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
                 .ApplySorting(queryParams.SortBy, queryParams.SortOrder)
                 .ApplyPagination(queryParams.Page, queryParams.PageSize);
 
-        return await query.ToListAsync(cancellationToken);
+        return await query.AsNoTracking().ToListAsync(cancellationToken);
     }
 
     public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await _dbSet.FindAsync(id, cancellationToken);
+        return await _dbSet.FindAsync(id, cancellationToken)
+               ?? throw new KeyNotFoundException($"Entity with ID {id} not found.");
     }
 
     public async Task AddAsync(T entity, CancellationToken cancellationToken)

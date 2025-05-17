@@ -21,6 +21,8 @@ public static class DependencyInjection
         services.AddValidatorsFromAssemblyContaining<UserDtoValidator>();
         services.AddValidatorsFromAssemblyContaining<LoginDtoValidator>();
         services.AddValidatorsFromAssemblyContaining<RegisterDtoValidator>();
+        services.AddValidatorsFromAssemblyContaining<CreateUserDtoValidator>();
+        services.AddValidatorsFromAssemblyContaining<UpdateUserDtoValidator>();
 
         return services;
     }

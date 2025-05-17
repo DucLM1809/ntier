@@ -1,4 +1,6 @@
 using FluentValidation;
+using Ntier.Business.Validators.Helpers;
+using Ntier.DataAccess;
 using Ntier.Shared.Dtos;
 using Ntier.Shared.Enums;
 
@@ -6,9 +8,17 @@ namespace Ntier.Business.Validators;
 
 public class RegisterDtoValidator : AbstractValidator<RegisterDto>
 {
-    public RegisterDtoValidator()
+    private readonly DataContext _dataContext;
+
+    public RegisterDtoValidator(DataContext dataContext)
     {
-        RuleFor(x => x.Email).NotEmpty().EmailAddress();
+        _dataContext = dataContext;
+
+        RuleFor(x => x.Email)
+               .NotEmpty()
+               .EmailAddress()
+               .MustAsync((email, cancellationToken) => UserValidatorHelpers.BeUniqueEmail(_dataContext, email, cancellationToken))
+               .WithMessage("Email is already taken.");
 
         RuleFor(x => x.Password)
             .NotEmpty()

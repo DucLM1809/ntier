@@ -30,7 +30,7 @@ public class AuthController : ControllerBase
     {
         _logger.LogInformation("Register API called for {Email}", request.Email);
 
-        var validationResult = await _registerValidator.ValidateAsync(request);
+        var validationResult = await _registerValidator.ValidateAsync(request, cancellationToken);
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 

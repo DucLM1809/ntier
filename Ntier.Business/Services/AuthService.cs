@@ -1,7 +1,9 @@
 using System.Security.Cryptography;
 using System.Text;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Ntier.Business.Utils;
 using Ntier.DataAccess.Repositories.Interfaces;
 using Ntier.Shared.Dtos;
 using Ntier.Shared.Models;
@@ -31,7 +33,7 @@ public class AuthService : IAuthService
 
         try
         {
-            var hashedPassword = HashPassword(registerDto.Password);
+            var hashedPassword = PasswordHelper.HashPassword(registerDto.Password);
 
             var user = _mapper.Map<User>(registerDto with { Password = hashedPassword });
 
@@ -59,10 +61,12 @@ public class AuthService : IAuthService
             if (user == null)
             {
                 _logger.LogWarning("Authentication failed for email: {Email}. User not found.", loginDto.Email);
-                return null;
+
+                throw new BadHttpRequestException("User not found.", StatusCodes.Status400BadRequest);
+                // return null;
             }
 
-            if (!VerifyPassword(loginDto.Password, user.Password))
+            if (!PasswordHelper.VerifyPassword(loginDto.Password, user.Password))
             {
                 _logger.LogWarning("Authentication failed for email: {Email}. Invalid password.", loginDto.Email);
                 return null;
@@ -141,17 +145,6 @@ public class AuthService : IAuthService
                 refreshTokenDto.RefreshToken);
             throw;
         }
-    }
-
-    private static string HashPassword(string password)
-    {
-        var sha256 = SHA256.Create();
-        return Convert.ToBase64String(sha256.ComputeHash(Encoding.UTF8.GetBytes(password)));
-    }
-
-    private static bool VerifyPassword(string password, string hashedPassword)
-    {
-        return HashPassword(password) == hashedPassword;
     }
 
     private static string GenerateRefreshToken()

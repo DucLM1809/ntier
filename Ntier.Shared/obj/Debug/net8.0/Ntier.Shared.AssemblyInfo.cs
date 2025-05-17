@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ntier.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c04a7903ef9ba2a9b849a17f5678ddac446f2770")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f2b79ebffd6672ae2d52e9b3128bc9ba5e036ce")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ntier.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ntier.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
