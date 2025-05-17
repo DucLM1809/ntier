@@ -3420,3 +3420,43 @@ UPDATE "Users" SET "Avatar" = @p0, "CreatedAt" = @p1,2025-05-17 14:25:37.008 +07
 2025-05-17 14:25:37.030 +07:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5147/api/v1/users/18 - 200 null application/json; charset=utf-8 4664.2317ms
 656.5548 ms
 2025-05-17 14:25:37.030 +07:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5147/api/v1/users/18 - 200 null application/json; charset=utf-8 4664.2317ms
+2025-05-17 21:56:04.023 +07:00 [INF] User profile is available. Using '/Users/minhducle/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2025-05-17 21:56:04.087 +07:00 [INF] Now listening on: http://localhost:5147
+2025-05-17 21:56:04.089 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-17 21:56:04.089 +07:00 [INF] Hosting environment: Development
+2025-05-17 21:56:04.090 +07:00 [INF] Content root path: /Users/minhducle/Documents/ASP.Net/Ntier/Ntier.API
+2025-05-17 21:56:04.463 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/index.html - null null
+2025-05-17 21:56:04.541 +07:00 [INF] HTTP GET /swagger/index.html responded 200 in 63.5731 ms
+2025-05-17 21:56:04.544 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/index.html - 200 null text/html;charset=utf-8 82.5597ms
+2025-05-17 21:56:04.582 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-bundle.js - null null
+2025-05-17 21:56:04.626 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-05-17 21:56:04.627 +07:00 [INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 43.2533 ms
+2025-05-17 21:56:04.627 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 45.1807ms
+2025-05-17 21:56:04.882 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - null null
+2025-05-17 21:56:04.988 +07:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 106.4287 ms
+2025-05-17 21:56:04.989 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5147/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 107.058ms
+2025-05-17 21:56:33.116 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - application/json 70
+2025-05-17 21:56:33.124 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-05-17 21:56:33.143 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-17 21:56:33.151 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-17 21:56:33.151 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Mi2025-05-17 21:56:33.251 +07:00 [INF] Login API called for minhductxqt@gmail.com
+2025-05-17 21:56:33.255 +07:00 [INF] Authentication attempt for email: minhductxqt@gmail.com
+2025-05-17 21:56:33.645 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."Created2025-05-17 21:56:33.645 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."CreatedAt", u."DateOfBirth", u."Em2025-05-17 21:56:33.733 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?' (DbType = DateTime), @p3='?', @p4='?' (DbType = Boo2025-05-17 21:56:33.733 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?' (DbType = DateTime), @p3='?', @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?', @p7='?' (DbType = DateTime), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "RefreshTokens" ("CreatedA2025-05-17 21:56:33.741 +07:00 [INF] Authentication succeeded for email: minhductxqt@gmail.com. Token generated.
+2025-05-17 21:56:33.743 +07:00 [INF] Executing OkObjectResult, writing value of type 'Ntier.Shared.Models.ApiResponse`1[[Ntier.Shared.Dtos.AuthResponseDto, Ntier.Shared, Ve2025-05-17 21:56:33.743 +07:00 [INF] Executing OkObjectR2025-05-17 21:56:33.749 +07:00 [INF] Executed action Ntier.API.Controllers.AuthController.Login (Ntier.API) in 596.202ms
+2025-05-17 21:56:33.749 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.AuthController.Login (Ntier.API)'
+2025-05-17 21:56:33.749 +07:00 [INF] HTTP POST /api/v1/auth/login responded 200 in 630.9516 ms
+2025-05-17 21:56:33.752 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5147/api/v1/auth/login - 200 null application/json; charset=utf-8 635.212ms
+2025-05-17 21:56:40.075 +07:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5147/api/v1/users/18 - application/json 131
+2025-05-17 21:56:40.076 +07:00 [INF] Validating JWT token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmhkdWN0eHF0QGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc02025-05-17 21:56:40.076 +07:00 [INF] Validating JWT token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pbmhkdWN0eHF0QGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc0NzQ52025-05-17 21:56:40.103 +07:00 [INF] Executing endpoint 'Ntier.API.Controllers.UsersController.UpdateUser (Ntier.API)'
+2025-05-17 21:56:40.105 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Tas2025-05-17 21:56:40.105 +07:00 [INF] Route matched with {action = "UpdateUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore2025-05-17 21:56:40.120 +07:00 [INF] UpdateUser API called for ID: 18 with data: UpdateUserDto { Name = minhduc, DateOfBirth = 12/5/2025 07:31:57 +00:00, Avatar = https://,2025-05-17 21:56:40.120 +07:00 [I2025-05-17 21:56:40.125 +07:00 [INF] Updating user with ID: 18 and request: UpdateUserDto { Name = minhduc, DateOfBirth = 12/5/2025 07:31:57 +00:00, Avatar = https://, Heig2025-05-17 21:56:40.125 +07:2025-05-17 21:56:40.146 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."A2025-05-17 21:56:40.146 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Avatar", u."CreatedAt", u."DateOfBirth", u."2025-05-17 21:56:40.166 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@p11='?' (DbType = Int32), @p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p32025-05-17 21:56:40.166 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@p11='?' (DbType = Int32), @p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = DateTime), @p3='?', @p4='?' (DbType = Int32), @p5='?' (DbType = Single), @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = Int32), @p10='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Users" SET "Avatar" = @p0, "CreatedAt" = @p1,2025-05-17 21:56:40.167 +07:00 [INF] User with ID: 18 updated successfully.
+2025-05-17 21:56:40.169 +07:00 [INF] Executing OkObjectResult, writing value of type 'Ntier.Shared.Models.ApiResponse`1[[Ntier.Shared.Dtos.UserResponseDto, Ntier.Shared, Ve2025-05-17 21:56:40.169 +07:00 [INF] Executing OkObjectR2025-05-17 21:56:40.174 +07:00 [INF] Executed action Ntier.API.Controllers.UsersController.UpdateUser (Ntier.API) in 68.6694ms
+2025-05-17 21:56:40.174 +07:00 [INF] Executed endpoint 'Ntier.API.Controllers.UsersController.UpdateUser (Ntier.API)'
+2025-05-17 21:56:40.174 +07:00 [INF] HTTP PUT /api/v1/users/18 responded 200 in 98.1344 ms
+2025-05-17 21:56:40.174 +07:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5147/api/v1/users/18 - 200 null application/json; charset=utf-8 98.9579ms
+in 98.1344 ms
+2025-05-17 21:56:40.174 +07:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5147/api/v1/users/18 - 200 null application/json; charset=utf-8 98.9579ms
