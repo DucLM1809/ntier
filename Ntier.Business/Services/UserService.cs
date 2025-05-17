@@ -119,11 +119,7 @@ public class UserService : IUserService
         {
             var existingUser = await _unitOfWork.Users.GetUserByIdAsync(id, cancellationToken);
 
-            var user = _mapper.Map<UpdateUserDto, User>(updateUserDto);
-            user.Id = id;
-            user.Password = existingUser.Password;
-            user.Email = existingUser.Email;
-            user.Role = existingUser.Role;
+            var user = _mapper.Map(updateUserDto, existingUser);
 
             var updatedUser = await _unitOfWork.Users.UpdateUser(user, cancellationToken);
 
