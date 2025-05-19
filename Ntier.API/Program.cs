@@ -139,6 +139,13 @@ builder.Services.AddRateLimiter(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<DataContext>>();
+    DbSeed.SeedFood(db, logger);
+}
+
 app.UseSerilogRequestLogging();
 
 

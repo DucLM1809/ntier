@@ -15,10 +15,11 @@ public class RegisterDtoValidator : AbstractValidator<RegisterDto>
         _dataContext = dataContext;
 
         RuleFor(x => x.Email)
-               .NotEmpty()
-               .EmailAddress()
-               .MustAsync((email, cancellationToken) => UserValidatorHelpers.BeUniqueEmail(_dataContext, email, cancellationToken))
-               .WithMessage("Email is already taken.");
+            .NotEmpty()
+            .EmailAddress()
+            .MustAsync((email, cancellationToken) =>
+                UserValidatorHelpers.BeUniqueEmail(_dataContext, email, cancellationToken))
+            .WithMessage("Email is already taken.");
 
         RuleFor(x => x.Password)
             .NotEmpty()
@@ -30,8 +31,8 @@ public class RegisterDtoValidator : AbstractValidator<RegisterDto>
         ;
 
         RuleFor(x => x.Gender)
-    .Must(gender => Enum.IsDefined(typeof(Gender), gender))
-    .WithMessage("Invalid gender. Allowed values: 'Male', 'Female', 'Other'.");
+            .Must(gender => Enum.IsDefined(typeof(Gender), gender))
+            .WithMessage("Invalid gender. Allowed values: 'Male', 'Female', 'Other'.");
 
         RuleFor(x => x.Name)
             .NotEmpty()
@@ -51,7 +52,7 @@ public class RegisterDtoValidator : AbstractValidator<RegisterDto>
             .WithMessage("Height must be between 0.5 and 3.0 meters.");
 
         RuleFor(x => x.Avatar)
-        .Must(x => x == null || x.StartsWith("http"))
-        .WithMessage("Avatar must be a valid URL or null.");
+            .Must(x => x == null || x.StartsWith("http"))
+            .WithMessage("Avatar must be a valid URL or null.");
     }
 }
