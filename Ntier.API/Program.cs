@@ -109,8 +109,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigins", policy =>
     {
         policy.WithOrigins("*")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
 
@@ -119,8 +119,8 @@ builder.Services.AddRateLimiter(options =>
 {
     options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
         RateLimitPartition.GetFixedWindowLimiter(
-            partitionKey: context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
-            factory: _ => new FixedWindowRateLimiterOptions
+            context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            _ => new FixedWindowRateLimiterOptions
             {
                 PermitLimit = 100, // Max requests allowed
                 Window = TimeSpan.FromMinutes(1), // Time window
@@ -146,6 +146,7 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<DataContext>();
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<DataContext>>();
     DbSeed.SeedFood(db, logger);
+    DbSeed.SeedMedicalConditions(db, logger);
 }
 
 

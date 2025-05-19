@@ -24,6 +24,7 @@ public class DataContext : DbContext
     public DbSet<Food> Foods { get; set; } = null!;
     public DbSet<Nutrient> Nutrients { get; set; } = null!;
     public DbSet<FoodNutrient> FoodNutrients { get; set; } = null!;
+    public DbSet<MedicalCondition> MedicalConditions { get; set; } = null!;
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
