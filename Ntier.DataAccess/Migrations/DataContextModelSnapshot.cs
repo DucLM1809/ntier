@@ -22,6 +22,106 @@ namespace Ntier.DataAccess.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Ntier.Shared.Models.Food", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Source")
+                        .HasColumnType("text");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Foods");
+                });
+
+            modelBuilder.Entity("Ntier.Shared.Models.FoodNutrient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<float>("Amount")
+                        .HasColumnType("real");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("FoodId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("NutrientId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FoodId");
+
+                    b.HasIndex("NutrientId");
+
+                    b.ToTable("FoodNutrients");
+                });
+
+            modelBuilder.Entity("Ntier.Shared.Models.Nutrient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Unit")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Nutrients");
+                });
+
             modelBuilder.Entity("Ntier.Shared.Models.RefreshToken", b =>
                 {
                     b.Property<int>("Id")
@@ -116,6 +216,25 @@ namespace Ntier.DataAccess.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Ntier.Shared.Models.FoodNutrient", b =>
+                {
+                    b.HasOne("Ntier.Shared.Models.Food", "Food")
+                        .WithMany("FoodNutrients")
+                        .HasForeignKey("FoodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Ntier.Shared.Models.Nutrient", "Nutrient")
+                        .WithMany("FoodNutrients")
+                        .HasForeignKey("NutrientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Food");
+
+                    b.Navigation("Nutrient");
+                });
+
             modelBuilder.Entity("Ntier.Shared.Models.RefreshToken", b =>
                 {
                     b.HasOne("Ntier.Shared.Models.User", "User")
@@ -125,6 +244,16 @@ namespace Ntier.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Ntier.Shared.Models.Food", b =>
+                {
+                    b.Navigation("FoodNutrients");
+                });
+
+            modelBuilder.Entity("Ntier.Shared.Models.Nutrient", b =>
+                {
+                    b.Navigation("FoodNutrients");
                 });
 
             modelBuilder.Entity("Ntier.Shared.Models.User", b =>

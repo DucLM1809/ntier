@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ntier.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9dc2acda5f0f024d382dd91d4b714f13fa4c659")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7e313549a5e14a3a6262bb63d18826649741509")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ntier.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ntier.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

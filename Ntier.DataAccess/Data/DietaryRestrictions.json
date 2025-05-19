@@ -1,0 +1,288 @@
+[
+  {
+    "medicalCondition": {
+      "id": 1,
+      "name": "Diabetes",
+      "description": "Condition characterized by impaired insulin function, requiring careful management of carbohydrate intake and blood glucose levels."
+    },
+    "dietaryRestrictions": {
+      "id": 1,
+      "high": ["Fiber", "Whole grains", "Lean proteins"],
+      "low": ["Refined sugars", "Processed foods"],
+      "avoid": ["High-sugar snacks", "Sugary beverages"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 2,
+      "name": "Celiac Disease",
+      "description": "Autoimmune disorder requiring strict avoidance of gluten-containing foods, common in wheat, barley, and rye."
+    },
+    "dietaryRestrictions": {
+      "id": 2,
+      "high": ["Gluten-free grains", "Non-gluten flours"],
+      "low": ["Wheat", "Barley", "Rye"],
+      "avoid": ["Gluten-containing processed foods"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 3,
+      "name": "Lactose Intolerance",
+      "description": "Inability to digest lactose, necessitating avoidance or limitation of dairy products containing lactose."
+    },
+    "dietaryRestrictions": {
+      "id": 3,
+      "high": ["Lactose-free dairy", "Low-lactose alternatives"],
+      "low": ["Dairy products with lactose"],
+      "avoid": ["High-lactose milk", "Ice cream"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 4,
+      "name": "Food Allergies",
+      "description": "Immune response to specific allergens, requiring elimination and careful reading of food labels."
+    },
+    "dietaryRestrictions": {
+      "id": 4,
+      "high": ["Safe protein sources", "Allergen-free alternatives"],
+      "low": ["Allergen-containing foods"],
+      "avoid": ["Nuts", "Shellfish", "Eggs"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 5,
+      "name": "Hypertension",
+      "description": "Condition characterized by high blood pressure, requiring reduced sodium intake and a focus on whole, unprocessed foods."
+    },
+    "dietaryRestrictions": {
+      "id": 5,
+      "high": ["Fruits", "Vegetables", "Lean proteins"],
+      "low": ["High-sodium processed foods"],
+      "avoid": ["Salty snacks", "Canned soups"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 6,
+      "name": "Kidney Disease",
+      "description": "Impaired kidney function necessitating limitation of potassium, phosphorus, and protein intake based on disease stage."
+    },
+    "dietaryRestrictions": {
+      "id": 6,
+      "high": ["Low-potassium fruits", "Low-phosphorus vegetables", "Moderate protein sources"],
+      "low": ["Potassium-rich fruits", "Phosphorus-rich foods"],
+      "avoid": ["Processed foods with additives"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 7,
+      "name": "Gastrointestinal Disorders",
+      "description": "Conditions like IBS and IBD requiring identification and avoidance of trigger foods, and adjustment of fiber intake."
+    },
+    "dietaryRestrictions": {
+      "id": 7,
+      "high": ["Fiber (for some conditions)", "Low-trigger foods"],
+      "low": ["Trigger foods"],
+      "avoid": ["High-fiber foods during flare-ups"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 8,
+      "name": "Heart Disease",
+      "description": "Cardiovascular condition requiring reduced saturated and trans fats, and emphasis on heart-healthy fats."
+    },
+    "dietaryRestrictions": {
+      "id": 8,
+      "high": ["Lean proteins", "Heart-healthy fats"],
+      "low": ["Saturated fats", "Trans fats"],
+      "avoid": ["Fried foods", "Processed meats"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 9,
+      "name": "Gout",
+      "description": "Inflammatory arthritis condition requiring limitation of purine-rich foods and careful management of alcohol intake."
+    },
+    "dietaryRestrictions": {
+      "id": 9,
+      "high": ["Low-purine foods", "Moderate alcohol"],
+      "low": ["Purine-rich foods", "Beer"],
+      "avoid": ["Organ meats", "Shellfish"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 10,
+      "name": "Epilepsy",
+      "description": "Neurological disorder managed with a ketogenic diet under medical supervision for seizure control."
+    },
+    "dietaryRestrictions": {
+      "id": 10,
+      "high": ["Healthy fats", "Low-carbohydrate foods"],
+      "low": ["High-carbohydrate foods"],
+      "avoid": ["High-carb snacks", "Sugar-rich foods"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 11,
+      "name": "Anemia",
+      "description": "Blood disorder requiring increased iron intake through iron-rich foods and enhanced absorption with vitamin C-rich foods."
+    },
+    "dietaryRestrictions": {
+      "id": 11,
+      "high": ["Iron-rich foods", "Vitamin C-rich foods"],
+      "low": ["Processed foods with additives"],
+      "avoid": ["Excessive tea and coffee"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 12,
+      "name": "Osteoporosis",
+      "description": "Bone disorder requiring adequate calcium and vitamin D intake, with limitations on caffeine and alcohol consumption."
+    },
+    "dietaryRestrictions": {
+      "id": 12,
+      "high": ["Calcium-rich foods", "Vitamin D-rich foods"],
+      "low": ["Excessive caffeine", "Alcohol"],
+      "avoid": ["High-caffeine drinks", "Excessive alcohol"]
+    }
+  },
+  {
+    "medicalCondition": {
+      "id": 13,
+      "name": "Gallbladder Disease",
+      "description": "Condition requiring reduced fat intake, particularly saturated and trans fats, and avoidance of cholesterol-rich and fried foods."
+    },
+    "dietaryRestrictions": {
+      "id": 13,
+      "high": ["Healthy fats", "Low-cholesterol foods"],
+      "low": ["Saturated fats", "Trans fats"],
+      "avoid": ["Fried foods", "Cholesterol-rich foods"]
+    }
+  },
+  {
+      "medicalCondition": {
+        "id": 15,
+        "name": "Thyroid Disorders",
+        "description": "Conditions like hypothyroidism and hyperthyroidism requiring management of iodine intake and balancing cruciferous vegetables for those with hypothyroidism."
+      },
+      "dietaryRestrictions": {
+        "id": 15,
+        "high": ["Iodine-rich foods (for hypothyroidism)", "Balanced cruciferous vegetables"],
+        "low": ["Excessive iodine", "Cruciferous vegetables (for hyperthyroidism)"],
+        "avoid": ["Iodized salt (for hyperthyroidism)", "Excessive cruciferous vegetables"]
+      }
+    },
+    {
+      "medicalCondition": {
+        "id": 16,
+        "name": "GERD",
+        "description": "Gastroesophageal Reflux Disease requiring avoidance of acidic and spicy foods, reduction of caffeine and chocolate intake, and consuming smaller, more frequent meals."
+      },
+      "dietaryRestrictions": {
+        "id": 16,
+        "high": ["Non-acidic fruits", "Lean proteins"],
+        "low": ["Acidic and spicy foods", "Caffeine", "Chocolate"],
+        "avoid": ["Citrus fruits", "Peppermint", "Large meals"]
+      }
+    },
+    {
+      "medicalCondition": {
+        "id": 17,
+        "name": "Gastroparesis",
+        "description": "Condition characterized by delayed stomach emptying, requiring consumption of smaller, low-fiber meals and avoidance of high-fat and high-fiber foods."
+      },
+      "dietaryRestrictions": {
+        "id": 17,
+        "high": ["Soft, low-fiber foods", "Well-cooked vegetables"],
+        "low": ["High-fiber foods"],
+        "avoid": ["Raw vegetables", "High-fat foods"]
+      }
+    },
+    {
+      "medicalCondition": {
+        "id": 18,
+        "name": "Multiple Sclerosis",
+        "description": "Neurological disorder requiring management of vitamin D intake and emphasis on an anti-inflammatory diet rich in fruits, vegetables, and omega-3 fatty acids."
+      },
+      "dietaryRestrictions": {
+        "id": 18,
+        "high": ["Fruits", "Vegetables", "Omega-3 rich foods"],
+        "low": ["Processed foods", "Saturated fats"],
+        "avoid": ["Trans fats", "High-sugar snacks"]
+      }
+    },
+    {
+      "medicalCondition": {
+        "id": 19,
+        "name": "Hemochromatosis",
+        "description": "Genetic disorder causing excess iron absorption, requiring reduction of iron intake and avoiding iron-fortified foods."
+      },
+      "dietaryRestrictions": {
+        "id": 19,
+        "high": ["Low-iron foods"],
+        "low": ["Iron-rich foods"],
+        "avoid": ["Iron-fortified cereals", "Supplements with iron"]
+      }
+    },
+    {
+      "medicalCondition": {
+        "id": 20,
+        "name": "Autism Spectrum Disorder (ASD)",
+        "description": "Neurodevelopmental disorder requiring consideration of sensory sensitivities and food aversions, with potential exploration of gluten-free and casein-free (GF/CF) diets."
+      },
+      "dietaryRestrictions": {
+        "id": 20,
+        "high": ["Sensory-friendly foods", "GF/CF alternatives"],
+        "low": ["Potential trigger foods"],
+        "avoid": ["Gluten-containing grains", "Casein-containing dairy"]
+      }
+    },
+    {
+      "medicalCondition": {
+        "id": 21,
+        "name": "Chronic Obstructive Pulmonary Disease (COPD)",
+        "description": "Respiratory condition requiring nutrient-dense foods to support respiratory function and adequate protein intake for muscle strength."
+      },
+      "dietaryRestrictions": {
+        "id": 21,
+        "high": ["Protein-rich foods", "Nutrient-dense foods"],
+        "low": ["Processed foods", "Empty-calorie snacks"],
+        "avoid": ["Excessive salt", "High-sugar beverages"]
+      }
+    },
+    {
+      "medicalCondition": {
+        "id": 22,
+        "name": "Migraines",
+        "description": "Neurological condition requiring identification and avoidance of potential trigger foods, along with ensuring regular meals and staying hydrated."
+      },
+      "dietaryRestrictions": {
+        "id": 22,
+        "high": ["Hydrating foods", "Regular meals"],
+        "low": ["Potential trigger foods"],
+        "avoid": ["Chocolate", "Aged cheese", "Caffeine-rich beverages"]
+      }
+    },
+    {
+      "medicalCondition": {
+        "id": 23,
+        "name": "Eosinophilic Esophagitis",
+        "description": "Inflammatory condition of the esophagus requiring an elimination diet to identify and avoid trigger foods, and potentially following an elemental diet under medical supervision."
+      },
+      "dietaryRestrictions": {
+        "id": 23,
+        "high": ["Elemental formulas (under supervision)", "Non-triggering foods"],
+        "low": ["Potential trigger foods"],
+        "avoid": ["Common allergens", "Spices and seasonings"]
+      }
+    }
+]

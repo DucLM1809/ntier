@@ -141,6 +141,13 @@ var app = builder.Build();
 
 app.UseSerilogRequestLogging();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<DataContext>>();
+    DbSeed.SeedFood(db, logger);
+}
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
