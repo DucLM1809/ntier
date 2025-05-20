@@ -1,3 +1,3 @@
 namespace Ntier.Shared.Dtos;
 
-public record DietaryRestrictionDto(MedicalConditionDto MedicalCondition);
+public record DietaryRestrictionDto(MedicalConditionDto MedicalCondition, DietRestrictionDto DietaryRestrictions);

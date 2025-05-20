@@ -141,12 +141,14 @@ var app = builder.Build();
 
 app.UseSerilogRequestLogging();
 
+// Configure database seeding
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<DataContext>();
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<DataContext>>();
     DbSeed.SeedFood(db, logger);
     DbSeed.SeedMedicalConditions(db, logger);
+    DbSeed.SeedDietRestriction(db, logger);
 }
 
 

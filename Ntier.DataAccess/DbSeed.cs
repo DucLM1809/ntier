@@ -150,4 +150,48 @@ public static class DbSeed
         else
             logger.LogInformation("Medical conditions already seeded.");
     }
+
+    public static void SeedDietRestriction(DataContext context, ILogger logger)
+    {
+        logger.LogInformation("Seeding medical conditions...");
+
+        var json = File.ReadAllText("../Ntier.DataAccess/Data/DietaryRestrictions.json");
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+            Converters =
+            {
+                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+            }
+        };
+
+        var dietaryRestrictions = JsonSerializer.Deserialize<List<DietaryRestrictionDto>>(json, options);
+
+        var normalizedDietRestrictions = new List<DietRestriction>();
+
+        if (dietaryRestrictions != null)
+            foreach (var dietaryRestriction in dietaryRestrictions)
+                normalizedDietRestrictions.Add(new DietRestriction
+                {
+                    High = string.Join(", ", dietaryRestriction.DietaryRestrictions.High),
+                    Low = string.Join(", ", dietaryRestriction.DietaryRestrictions.Low),
+                    Avoid = string.Join(", ", dietaryRestriction.DietaryRestrictions.Avoid)
+                });
+
+        if (!context.DietRestrictions.Any())
+            try
+            {
+                context.DietRestrictions.AddRange(normalizedDietRestrictions);
+                context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                logger.LogError("Error seeding diet restrictions: {Message}", e.Message);
+                logger.LogError("Stack Trace: {StackTrace}", e.StackTrace);
+                throw;
+            }
+        else
+            logger.LogInformation("Diet restrictions already seeded.");
+    }
 }
