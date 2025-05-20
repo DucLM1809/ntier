@@ -8,5 +8,6 @@ public interface IUnitOfWork : IDisposable
     IRefreshTokenRepository RefreshTokens { get; }
     IFoodRepository Foods { get; }
     INutrientRepository Nutrients { get; }
+    IFoodNutrientRepository FoodNutrients { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

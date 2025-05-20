@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ntier.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+124e47f65610f4e0a8cb3c956a87b2651bccbe8c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24b8dc8e252379a034eaee18e06ca70616e265e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ntier.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ntier.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

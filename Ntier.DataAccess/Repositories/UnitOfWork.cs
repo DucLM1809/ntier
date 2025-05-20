@@ -7,6 +7,7 @@ namespace Ntier.DataAccess.Repositories;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly DataContext _context;
+    private IFoodNutrientRepository _foodNutrientRepository;
     private IFoodRepository _foodRepository;
     private INutrientRepository _nutrientRepository;
     private IRefreshTokenRepository _refreshTokenRepository;
@@ -21,6 +22,7 @@ public class UnitOfWork : IUnitOfWork
     public IFoodRepository Foods => _foodRepository ??= new FoodRepository(_context);
     public IUserRepository Users => _userRepository ??= new UserRepository(_context);
     public IRefreshTokenRepository RefreshTokens => _refreshTokenRepository ??= new RefreshTokenRepository(_context);
+    public IFoodNutrientRepository FoodNutrients => _foodNutrientRepository ??= new FoodNutrientRepository(_context);
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {
