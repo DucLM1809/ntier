@@ -14,6 +14,7 @@ public static class DependencyInjection
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IFoodService, FoodService>();
+        services.AddScoped<INutrientService, NutrientService>();
 
         // Register AutoMapper
         services.AddAutoMapper(typeof(UserProfile));
