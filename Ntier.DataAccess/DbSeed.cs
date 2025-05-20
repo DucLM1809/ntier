@@ -39,7 +39,8 @@ public static class DbSeed
                     normalizedFoods.Add(new Food
                     {
                         Name = food.Description,
-                        Description = food.Description
+                        Description = food.Description,
+                        Source = "fdc (FNDDS)"
                     });
 
                     // Check if nutrient is not existed then add to list

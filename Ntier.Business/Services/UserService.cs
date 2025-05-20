@@ -26,7 +26,7 @@ public class UserService : IUserService
     public async Task<List<UserResponseDto>> GetFilteredUsersAsync(QueryParameters queryParameters,
         UserFilter userFilter, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Fetching filtered users with parameters: {QueryParameters}, Filter: {{UserFilter}}",
+        _logger.LogInformation("Fetching filtered users with parameters: {QueryParameters}, Filter: {UserFilter}",
             queryParameters, userFilter);
 
         try
@@ -53,7 +53,7 @@ public class UserService : IUserService
 
         try
         {
-            var user = await _unitOfWork.Users.GetUserByIdAsync(id, cancellationToken);
+            var user = await _unitOfWork.Users.GetByIdAsync(id, cancellationToken);
 
             if (user == null)
             {
@@ -80,7 +80,7 @@ public class UserService : IUserService
 
             user.Password = PasswordHelper.HashPassword("Aqswde123@");
 
-            var createdUser = await _unitOfWork.Users.AddUser(user, cancellationToken);
+            var createdUser = await _unitOfWork.Users.AddAsync(user, cancellationToken);
 
             _logger.LogInformation("User added successfully with ID: {UserId}", createdUser.Id);
 
@@ -100,7 +100,7 @@ public class UserService : IUserService
 
         try
         {
-            return _unitOfWork.Users.DeleteUser(id, cancellationToken);
+            return _unitOfWork.Users.DeleteAsync(id, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -117,11 +117,11 @@ public class UserService : IUserService
 
         try
         {
-            var existingUser = await _unitOfWork.Users.GetUserByIdAsync(id, cancellationToken);
+            var existingUser = await _unitOfWork.Users.GetByIdAsync(id, cancellationToken);
 
             var user = _mapper.Map(updateUserDto, existingUser);
 
-            var updatedUser = await _unitOfWork.Users.UpdateUser(user, cancellationToken);
+            var updatedUser = await _unitOfWork.Users.UpdateAsync(user, cancellationToken);
 
             _logger.LogInformation("User with ID: {UserId} updated successfully.", id);
 

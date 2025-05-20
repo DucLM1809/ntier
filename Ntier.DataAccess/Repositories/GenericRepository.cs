@@ -44,25 +44,23 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         return await query.AsNoTracking().ToListAsync(cancellationToken);
     }
 
-    public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken)
-    {
-        return await _dbSet.FindAsync(id, cancellationToken)
-               ?? throw new KeyNotFoundException($"Entity with ID {id} not found.");
-    }
-
-    public async Task AddAsync(T entity, CancellationToken cancellationToken)
+    public async Task<T> AddAsync(T entity, CancellationToken cancellationToken)
     {
         await _dbSet.AddAsync(entity, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
+
+        return entity;
     }
 
-    public async Task UpdateAsync(T entity, CancellationToken cancellationToken)
+    public async Task<T> UpdateAsync(T entity, CancellationToken cancellationToken)
     {
         _dbSet.Update(entity);
         await _context.SaveChangesAsync(cancellationToken);
+
+        return entity;
     }
 
-    public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+    public async Task DeleteAsync(int id, CancellationToken cancellationToken)
     {
         var entity = await GetByIdAsync(id, cancellationToken);
 
@@ -71,5 +69,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
             _dbSet.Remove(entity);
             await _context.SaveChangesAsync(cancellationToken);
         }
+    }
+
+    public async Task<T> GetByIdAsync(int id, CancellationToken cancellationToken)
+    {
+        return await _dbSet.FindAsync(id, cancellationToken);
     }
 }
