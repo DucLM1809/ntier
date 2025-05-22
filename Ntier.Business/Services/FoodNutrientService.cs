@@ -24,7 +24,10 @@ public class FoodNutrientService : IFoodNutrientService
         try
         {
             var foodNutrients = await _unitOfWork.FoodNutrients.GetFilteredAsync(null, queryParameters,
-                cancellationToken);
+                cancellationToken,
+                f => f.Food,
+                f => f.Nutrient
+            );
 
             _logger.LogInformation("Successfully retrieved {FoodNutrientCount} food nutrients.", foodNutrients.Count);
 

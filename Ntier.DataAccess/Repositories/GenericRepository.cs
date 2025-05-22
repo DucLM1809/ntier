@@ -28,7 +28,8 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     }
 
     public async Task<List<T>> GetFilteredAsync(Expression<Func<T, bool>>? predicate = null,
-        QueryParameters? queryParams = null, CancellationToken cancellationToken = default)
+        QueryParameters? queryParams = null, CancellationToken cancellationToken = default,
+        params Expression<Func<T, object>>[]? includesProperties)
     {
         IQueryable<T> query = _dbSet;
 
@@ -40,6 +41,11 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
             query = query
                 .ApplySorting(queryParams.SortBy, queryParams.SortOrder)
                 .ApplyPagination(queryParams.Page, queryParams.PageSize);
+
+        // Apply Includes (if any)
+        if (includesProperties != null)
+            foreach (var includeProperty in includesProperties)
+                query = query.Include(includeProperty);
 
         return await query.AsNoTracking().ToListAsync(cancellationToken);
     }

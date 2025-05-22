@@ -9,7 +9,7 @@ public interface IGenericRepository<T> where T : BaseEntity
     IQueryable<T> Find(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
 
     Task<List<T>> GetFilteredAsync(Expression<Func<T, bool>>? predicate, QueryParameters queryParams,
-        CancellationToken cancellationToken);
+        CancellationToken cancellationToken, params Expression<Func<T, object>>[]? includesProperties);
 
     Task<T> GetByIdAsync(int id, CancellationToken cancellationToken);
     Task<T> AddAsync(T entity, CancellationToken cancellationToken);

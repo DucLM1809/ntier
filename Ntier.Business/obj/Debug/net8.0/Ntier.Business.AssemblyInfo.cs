@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ntier.Business")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24b8dc8e252379a034eaee18e06ca70616e265e8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4fdd94521b8115efbf40147a1cb0bfb795a3fa98")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ntier.Business")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ntier.Business")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
