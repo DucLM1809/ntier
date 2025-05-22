@@ -53,7 +53,7 @@ public class FoodNutrientService : IFoodNutrientService
             if (foodNutrient == null)
             {
                 _logger.LogWarning("Food nutrient with ID: {FoodNutrientId} not found.", id);
-                throw new NotFoundException($"Food nutrient with ID: {id} not found.");
+                throw new BadRequestException($"Food nutrient with ID: {id} not found.");
             }
 
             return foodNutrient;

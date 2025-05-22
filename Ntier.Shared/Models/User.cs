@@ -21,12 +21,16 @@ public class User : BaseEntity
 
     public DateTimeOffset? DateOfBirth { get; set; } = null;
 
-    [Required]
-    public string Name { get; set; } = null!;
+    [Required] public string Name { get; set; } = null!;
 
     public string? Avatar { get; set; } = null;
 
     public float? Height { get; set; } = null;
 
     public int Gender { get; set; } = 0;
+
+    public int? ExpertProfileId { get; set; } = null;
+    public ExpertProfile? ExpertProfile { get; set; } = null;
+
+    public ICollection<MedicalConditionUser>? MedicalConditionUser { get; set; } = null;
 }

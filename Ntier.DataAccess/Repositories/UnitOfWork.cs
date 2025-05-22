@@ -9,6 +9,7 @@ public class UnitOfWork : IUnitOfWork
     private readonly DataContext _context;
     private IFoodNutrientRepository _foodNutrientRepository;
     private IFoodRepository _foodRepository;
+    private IMedicalConditionUserRepository _medicalConditionUserRepository;
     private INutrientRepository _nutrientRepository;
     private IRefreshTokenRepository _refreshTokenRepository;
     private IUserRepository _userRepository;
@@ -23,6 +24,9 @@ public class UnitOfWork : IUnitOfWork
     public IUserRepository Users => _userRepository ??= new UserRepository(_context);
     public IRefreshTokenRepository RefreshTokens => _refreshTokenRepository ??= new RefreshTokenRepository(_context);
     public IFoodNutrientRepository FoodNutrients => _foodNutrientRepository ??= new FoodNutrientRepository(_context);
+
+    public IMedicalConditionUserRepository MedicalConditionUsers =>
+        _medicalConditionUserRepository ??= new MedicalConditionUserRepository(_context);
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {

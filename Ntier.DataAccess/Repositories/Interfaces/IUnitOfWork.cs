@@ -9,5 +9,6 @@ public interface IUnitOfWork : IDisposable
     IFoodRepository Foods { get; }
     INutrientRepository Nutrients { get; }
     IFoodNutrientRepository FoodNutrients { get; }
+    IMedicalConditionUserRepository MedicalConditionUsers { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

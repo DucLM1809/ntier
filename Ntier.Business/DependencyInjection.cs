@@ -16,6 +16,7 @@ public static class DependencyInjection
         services.AddScoped<IFoodService, FoodService>();
         services.AddScoped<INutrientService, NutrientService>();
         services.AddScoped<IFoodNutrientService, FoodNutrientService>();
+        services.AddScoped<IMedicalConditionUserService, MedicalConditionUserService>();
 
         // Register AutoMapper
         services.AddAutoMapper(typeof(UserProfile));
@@ -26,6 +27,7 @@ public static class DependencyInjection
         services.AddValidatorsFromAssemblyContaining<RegisterDtoValidator>();
         services.AddValidatorsFromAssemblyContaining<CreateUserDtoValidator>();
         services.AddValidatorsFromAssemblyContaining<UpdateUserDtoValidator>();
+        services.AddValidatorsFromAssemblyContaining<MedicalConditionUserDtoValidator>();
 
         return services;
     }

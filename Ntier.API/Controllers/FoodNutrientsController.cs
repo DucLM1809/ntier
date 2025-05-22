@@ -6,7 +6,7 @@ using Ntier.Shared.Models;
 namespace Ntier.API.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[Route("api/v1/food-nutrients")]
 [Authorize(Roles = "Admin,User")]
 public class FoodNutrientsController : ControllerBase
 {

@@ -18,6 +18,8 @@ public class DataContext : DbContext
     public DbSet<FoodNutrient> FoodNutrients { get; set; } = null!;
     public DbSet<MedicalCondition> MedicalConditions { get; set; } = null!;
     public DbSet<DietRestriction> DietRestrictions { get; set; } = null!;
+    public DbSet<ExpertProfile> ExpertProfiles { get; set; } = null!;
+    public DbSet<MedicalConditionUser> MedicalConditionUsers { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -77,6 +77,12 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         }
     }
 
+    public Task<List<T>> AddRangeAsync(List<T> entities, CancellationToken cancellationToken)
+    {
+        _dbSet.AddRange(entities);
+        return _context.SaveChangesAsync(cancellationToken).ContinueWith(_ => entities);
+    }
+
     public async Task<T> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
         return await _dbSet.FindAsync(id, cancellationToken);

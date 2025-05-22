@@ -1,5 +1,4 @@
 using FluentValidation;
-using Microsoft.EntityFrameworkCore;
 using Ntier.Business.Validators.Helpers;
 using Ntier.DataAccess;
 using Ntier.Shared.Dtos;
@@ -18,7 +17,9 @@ public class UserDtoValidator : AbstractValidator<UserDto>
         RuleFor(x => x.Email)
             .NotEmpty()
             .EmailAddress()
-            .MustAsync((email, cancellationToken) => UserValidatorHelpers.BeUniqueEmail(_context, email, cancellationToken)).WithMessage("Email is already taken.");
+            .MustAsync((email, cancellationToken) =>
+                UserValidatorHelpers.BeUniqueEmail(_context, email, cancellationToken))
+            .WithMessage("Email is already taken.");
 
         RuleFor(x => x.Password)
             .NotEmpty()

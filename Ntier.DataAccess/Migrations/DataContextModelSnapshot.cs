@@ -53,6 +53,35 @@ namespace Ntier.DataAccess.Migrations
                     b.ToTable("DietRestrictions");
                 });
 
+            modelBuilder.Entity("Ntier.Shared.Models.ExpertProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CertImage")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ExpertProfiles");
+                });
+
             modelBuilder.Entity("Ntier.Shared.Models.Food", b =>
                 {
                     b.Property<int>("Id")
@@ -152,6 +181,38 @@ namespace Ntier.DataAccess.Migrations
                     b.ToTable("MedicalConditions");
                 });
 
+            modelBuilder.Entity("Ntier.Shared.Models.MedicalConditionUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("MedicalConditionId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MedicalConditionId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("MedicalConditionUsers");
+                });
+
             modelBuilder.Entity("Ntier.Shared.Models.Nutrient", b =>
                 {
                     b.Property<int>("Id")
@@ -248,6 +309,9 @@ namespace Ntier.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<int?>("ExpertProfileId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Gender")
                         .HasColumnType("integer");
 
@@ -273,6 +337,8 @@ namespace Ntier.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ExpertProfileId");
+
                     b.ToTable("Users");
                 });
 
@@ -295,6 +361,25 @@ namespace Ntier.DataAccess.Migrations
                     b.Navigation("Nutrient");
                 });
 
+            modelBuilder.Entity("Ntier.Shared.Models.MedicalConditionUser", b =>
+                {
+                    b.HasOne("Ntier.Shared.Models.MedicalCondition", "MedicalCondition")
+                        .WithMany("MedicalConditionUsers")
+                        .HasForeignKey("MedicalConditionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Ntier.Shared.Models.User", "User")
+                        .WithMany("MedicalConditionUser")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MedicalCondition");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Ntier.Shared.Models.RefreshToken", b =>
                 {
                     b.HasOne("Ntier.Shared.Models.User", "User")
@@ -306,9 +391,28 @@ namespace Ntier.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Ntier.Shared.Models.User", b =>
+                {
+                    b.HasOne("Ntier.Shared.Models.ExpertProfile", "ExpertProfile")
+                        .WithMany("Users")
+                        .HasForeignKey("ExpertProfileId");
+
+                    b.Navigation("ExpertProfile");
+                });
+
+            modelBuilder.Entity("Ntier.Shared.Models.ExpertProfile", b =>
+                {
+                    b.Navigation("Users");
+                });
+
             modelBuilder.Entity("Ntier.Shared.Models.Food", b =>
                 {
                     b.Navigation("FoodNutrients");
+                });
+
+            modelBuilder.Entity("Ntier.Shared.Models.MedicalCondition", b =>
+                {
+                    b.Navigation("MedicalConditionUsers");
                 });
 
             modelBuilder.Entity("Ntier.Shared.Models.Nutrient", b =>
@@ -318,6 +422,8 @@ namespace Ntier.DataAccess.Migrations
 
             modelBuilder.Entity("Ntier.Shared.Models.User", b =>
                 {
+                    b.Navigation("MedicalConditionUser");
+
                     b.Navigation("RefreshTokens");
                 });
 #pragma warning restore 612, 618

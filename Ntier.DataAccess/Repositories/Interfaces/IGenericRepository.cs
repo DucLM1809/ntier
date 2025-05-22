@@ -15,4 +15,5 @@ public interface IGenericRepository<T> where T : BaseEntity
     Task<T> AddAsync(T entity, CancellationToken cancellationToken);
     Task<T> UpdateAsync(T entity, CancellationToken cancellationToken);
     Task DeleteAsync(int id, CancellationToken cancellationToken);
+    Task<List<T>> AddRangeAsync(List<T> entities, CancellationToken cancellationToken);
 }
