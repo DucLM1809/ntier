@@ -1,23 +1,10 @@
-# Ignore Debug folders
-**/bin/Debug/
-**/Debug/
-
-# Ignore log files and directories
-*.log
-logs/
-**/logs/
-**/*.log
-
-# Ignore Visual Studio temporary files, build results,# Ignore Debug folders
-**/bin/Debug/
-**/Debug/
-
-# Ignore log files and directories
-*.log
-logs/
-**/logs/
-**/*.log
-
-# Ignore obj folders
-**/obj/
-**/obj/Debug/
+/Ntier.API/bin/
+/Ntier.DataAccess/bin/
+/Ntier.Shared/bin/
+/Ntier.Business/bin/
+/.idea/
+/Ntier.API/Logs/
+/Ntier.Business/obj/
+/Ntier.DataAccess/obj/
+/Ntier.Shared/obj/
+/Ntier.API/obj/
