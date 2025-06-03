@@ -10,5 +10,5 @@ public interface IUnitOfWork : IDisposable
     INutrientRepository Nutrients { get; }
     IFoodNutrientRepository FoodNutrients { get; }
     IMedicalConditionUserRepository MedicalConditionUsers { get; }
-    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Ntier.Business.Exceptions;
 using Ntier.DataAccess.Repositories.Interfaces;
@@ -23,11 +24,10 @@ public class FoodService : IFoodService
 
         try
         {
-            var foods = await _unitOfWork.Foods.GetFilteredAsync(null, queryParameters, cancellationToken);
+            var foods = await _unitOfWork.Foods.GetAsync(null, queryParameters);
 
-            _logger.LogInformation("Successfully retrieved {FoodCount} foods.", foods.Count);
 
-            return foods;
+            return await foods.ToListAsync(cancellationToken);
         }
         catch (Exception ex)
         {
@@ -43,7 +43,7 @@ public class FoodService : IFoodService
 
         try
         {
-            var food = await _unitOfWork.Foods.GetByIdAsync(id, cancellationToken);
+            var food = await _unitOfWork.Foods.GetByIdAsync(id);
 
             if (food == null)
             {
@@ -66,7 +66,8 @@ public class FoodService : IFoodService
 
         try
         {
-            await _unitOfWork.Foods.AddAsync(food, cancellationToken);
+            await _unitOfWork.Foods.AddAsync(food);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Successfully added food with ID: {FoodId}", food.Id);
 
@@ -85,7 +86,7 @@ public class FoodService : IFoodService
 
         try
         {
-            var existingFood = await _unitOfWork.Foods.GetByIdAsync(id, cancellationToken);
+            var existingFood = await _unitOfWork.Foods.GetByIdAsync(id);
 
             if (existingFood == null)
             {
@@ -94,7 +95,8 @@ public class FoodService : IFoodService
             }
 
             food.Id = id;
-            await _unitOfWork.Foods.UpdateAsync(food, cancellationToken);
+            await _unitOfWork.Foods.UpdateAsync(food);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Successfully updated food with ID: {FoodId}", id);
 
@@ -113,7 +115,7 @@ public class FoodService : IFoodService
 
         try
         {
-            var existingFood = await _unitOfWork.Foods.GetByIdAsync(id, cancellationToken);
+            var existingFood = await _unitOfWork.Foods.GetByIdAsync(id);
 
             if (existingFood == null)
             {
@@ -121,7 +123,8 @@ public class FoodService : IFoodService
                 throw new NotFoundException($"Food with ID: {id} not found.");
             }
 
-            await _unitOfWork.Foods.DeleteAsync(id, cancellationToken);
+            await _unitOfWork.Foods.DeleteAsync(id);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Successfully deleted food with ID: {FoodId}", id);
         }

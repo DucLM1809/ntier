@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Ntier.Business.Exceptions;
 using Ntier.DataAccess.Repositories.Interfaces;
@@ -23,15 +25,14 @@ public class FoodNutrientService : IFoodNutrientService
 
         try
         {
-            var foodNutrients = await _unitOfWork.FoodNutrients.GetFilteredAsync(null, queryParameters,
-                cancellationToken,
-                f => f.Food,
-                f => f.Nutrient
+            var foodNutrients = await _unitOfWork.FoodNutrients.GetAsync(null, queryParameters,
+                new List<Expression<Func<FoodNutrient, object>>>
+                {
+                    fn => fn.Food
+                }
             );
 
-            _logger.LogInformation("Successfully retrieved {FoodNutrientCount} food nutrients.", foodNutrients.Count);
-
-            return foodNutrients;
+            return await foodNutrients.ToListAsync(cancellationToken);
         }
         catch (Exception ex)
         {
@@ -48,7 +49,7 @@ public class FoodNutrientService : IFoodNutrientService
 
         try
         {
-            var foodNutrient = await _unitOfWork.FoodNutrients.GetByIdAsync(id, cancellationToken);
+            var foodNutrient = await _unitOfWork.FoodNutrients.GetByIdAsync(id);
 
             if (foodNutrient == null)
             {
@@ -71,7 +72,7 @@ public class FoodNutrientService : IFoodNutrientService
 
         try
         {
-            var addedFoodNutrient = await _unitOfWork.FoodNutrients.AddAsync(foodNutrient, cancellationToken);
+            var addedFoodNutrient = await _unitOfWork.FoodNutrients.AddAsync(foodNutrient);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Successfully added food nutrient with ID: {FoodNutrientId}",
@@ -93,7 +94,7 @@ public class FoodNutrientService : IFoodNutrientService
 
         try
         {
-            var existingFoodNutrient = await _unitOfWork.FoodNutrients.GetByIdAsync(id, cancellationToken);
+            var existingFoodNutrient = await _unitOfWork.FoodNutrients.GetByIdAsync(id);
 
             if (existingFoodNutrient == null)
             {
@@ -101,7 +102,8 @@ public class FoodNutrientService : IFoodNutrientService
                 throw new NotFoundException($"Food nutrient with ID: {id} not found.");
             }
 
-            await _unitOfWork.FoodNutrients.UpdateAsync(foodNutrient, cancellationToken);
+            await _unitOfWork.FoodNutrients.UpdateAsync(foodNutrient);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Successfully updated food nutrient with ID: {FoodNutrientId}", id);
 
@@ -120,7 +122,7 @@ public class FoodNutrientService : IFoodNutrientService
 
         try
         {
-            var existingFoodNutrient = await _unitOfWork.FoodNutrients.GetByIdAsync(id, cancellationToken);
+            var existingFoodNutrient = await _unitOfWork.FoodNutrients.GetByIdAsync(id);
 
             if (existingFoodNutrient == null)
             {
@@ -128,7 +130,8 @@ public class FoodNutrientService : IFoodNutrientService
                 throw new NotFoundException($"Food nutrient with ID: {id} not found.");
             }
 
-            await _unitOfWork.FoodNutrients.DeleteAsync(id, cancellationToken);
+            await _unitOfWork.FoodNutrients.DeleteAsync(id);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Successfully deleted food nutrient with ID: {FoodNutrientId}", id);
         }

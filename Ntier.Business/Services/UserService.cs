@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Ntier.Business.Exceptions;
 using Ntier.Business.Service.Extensions;
@@ -33,11 +34,9 @@ public class UserService : IUserService
         {
             var filterExpression = UserFilteringExtensions.BuildFilter(userFilter);
 
-            var users = await _unitOfWork.Users.GetFilteredAsync(filterExpression, queryParameters, cancellationToken);
+            var users = await _unitOfWork.Users.GetAsync(filterExpression, queryParameters);
 
-            _logger.LogInformation("Successfully retrieved {UserCount} users.", users.Count);
-
-            return _mapper.Map<List<UserResponseDto>>(users);
+            return _mapper.Map<List<UserResponseDto>>(await users.ToListAsync(cancellationToken));
         }
         catch (Exception ex)
         {
@@ -53,7 +52,7 @@ public class UserService : IUserService
 
         try
         {
-            var user = await _unitOfWork.Users.GetByIdAsync(id, cancellationToken);
+            var user = await _unitOfWork.Users.GetByIdAsync(id);
 
             if (user == null)
             {
@@ -80,7 +79,8 @@ public class UserService : IUserService
 
             user.Password = PasswordHelper.HashPassword("Aqswde123@");
 
-            var createdUser = await _unitOfWork.Users.AddAsync(user, cancellationToken);
+            var createdUser = await _unitOfWork.Users.AddAsync(user);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("User added successfully with ID: {UserId}", createdUser.Id);
 
@@ -94,13 +94,24 @@ public class UserService : IUserService
         }
     }
 
-    public Task DeleteUserAsync(int id, CancellationToken cancellationToken)
+    public async Task DeleteUserAsync(int id, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Deleting user with ID: {UserId}", id);
 
         try
         {
-            return _unitOfWork.Users.DeleteAsync(id, cancellationToken);
+            var user = await _unitOfWork.Users.GetByIdAsync(id);
+
+            if (user == null)
+            {
+                _logger.LogWarning("User with ID: {UserId} not found.", id);
+                throw new NotFoundException($"User with ID: {id} not found.");
+            }
+
+            await _unitOfWork.Users.DeleteAsync(id);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+            _logger.LogInformation("Successfully deleted user with ID: {UserId}", id);
         }
         catch (Exception ex)
         {
@@ -117,15 +128,22 @@ public class UserService : IUserService
 
         try
         {
-            var existingUser = await _unitOfWork.Users.GetByIdAsync(id, cancellationToken);
+            var existingUser = await _unitOfWork.Users.GetByIdAsync(id);
 
             var user = _mapper.Map(updateUserDto, existingUser);
 
-            var updatedUser = await _unitOfWork.Users.UpdateAsync(user, cancellationToken);
+            if (user == null)
+            {
+                _logger.LogWarning("User with ID: {UserId} not found.", id);
+                throw new NotFoundException($"User with ID: {id} not found.");
+            }
+
+            await _unitOfWork.Users.UpdateAsync(user);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("User with ID: {UserId} updated successfully.", id);
 
-            return _mapper.Map<UserResponseDto>(updatedUser);
+            return _mapper.Map<UserResponseDto>(updateUserDto);
         }
         catch (Exception ex)
         {

@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Ntier.Business.Exceptions;
 using Ntier.DataAccess.Repositories.Interfaces;
@@ -25,13 +26,10 @@ public class MedicalConditionUserService : IMedicalConditionUserService
 
         try
         {
-            var medicalConditionUsers = await _unitOfWork.MedicalConditionUsers.GetFilteredAsync(null, queryParameters,
-                cancellationToken);
+            var medicalConditionUsers = await _unitOfWork.MedicalConditionUsers.GetAsync(null, queryParameters);
 
-            _logger.LogInformation("Successfully retrieved {MedicalConditionUserCount} medical condition users.",
-                medicalConditionUsers.Count);
 
-            return medicalConditionUsers;
+            return await medicalConditionUsers.ToListAsync(cancellationToken);
         }
         catch (Exception ex)
         {
@@ -51,7 +49,7 @@ public class MedicalConditionUserService : IMedicalConditionUserService
 
         try
         {
-            var existingUser = await _unitOfWork.Users.GetByIdAsync(medicalConditionUserDto.UserId, cancellationToken);
+            var existingUser = await _unitOfWork.Users.GetByIdAsync(medicalConditionUserDto.UserId);
             if (existingUser == null)
             {
                 _logger.LogWarning("User with ID: {UserId} not found.", medicalConditionUserDto.UserId);
@@ -68,9 +66,10 @@ public class MedicalConditionUserService : IMedicalConditionUserService
                     }
                 );
 
+            await _unitOfWork.MedicalConditionUsers.AddRange(normalizedMedicalConditionUsers);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return await _unitOfWork.MedicalConditionUsers.AddRangeAsync(normalizedMedicalConditionUsers,
-                cancellationToken);
+            return normalizedMedicalConditionUsers;
         }
         catch (Exception e)
         {
@@ -87,7 +86,7 @@ public class MedicalConditionUserService : IMedicalConditionUserService
 
         try
         {
-            var medicalConditionUser = _unitOfWork.MedicalConditionUsers.GetByIdAsync(id, cancellationToken);
+            var medicalConditionUser = _unitOfWork.MedicalConditionUsers.GetByIdAsync(id);
 
             if (medicalConditionUser == null)
             {
@@ -95,7 +94,8 @@ public class MedicalConditionUserService : IMedicalConditionUserService
                 throw new NotFoundException($"Medical condition user with ID: {id} not found.");
             }
 
-            await _unitOfWork.MedicalConditionUsers.DeleteAsync(id, cancellationToken);
+            await _unitOfWork.MedicalConditionUsers.DeleteAsync(id);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Successfully deleted medical condition user with ID: {MedicalConditionUserId}", id);
         }
@@ -115,7 +115,7 @@ public class MedicalConditionUserService : IMedicalConditionUserService
 
         try
         {
-            var medicalConditionUser = await _unitOfWork.MedicalConditionUsers.GetByIdAsync(id, cancellationToken);
+            var medicalConditionUser = await _unitOfWork.MedicalConditionUsers.GetByIdAsync(id);
 
             if (medicalConditionUser == null)
             {

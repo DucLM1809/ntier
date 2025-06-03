@@ -5,15 +5,23 @@ namespace Ntier.DataAccess.Repository.Interfaces;
 
 public interface IGenericRepository<T> where T : BaseEntity
 {
-    IQueryable<T> GetAll(CancellationToken cancellationToken);
-    IQueryable<T> Find(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
+    Task<IQueryable<T>> GetAsync(
+        Expression<Func<T, bool>>? predicate = null,
+        QueryParameters? queryParams = null,
+        List<Expression<Func<T, object>>>? includes = null,
+        bool disableTracking = false);
 
-    Task<List<T>> GetFilteredAsync(Expression<Func<T, bool>>? predicate, QueryParameters queryParams,
-        CancellationToken cancellationToken, params Expression<Func<T, object>>[]? includesProperties);
+    IQueryable<T> Get(
+        Expression<Func<T, bool>>? predicate = null,
+        QueryParameters? queryParams = null,
+        List<Expression<Func<T, object>>>? includes = null,
+        bool disableTracking = false);
 
-    Task<T> GetByIdAsync(int id, CancellationToken cancellationToken);
-    Task<T> AddAsync(T entity, CancellationToken cancellationToken);
-    Task<T> UpdateAsync(T entity, CancellationToken cancellationToken);
-    Task DeleteAsync(int id, CancellationToken cancellationToken);
-    Task<List<T>> AddRangeAsync(List<T> entities, CancellationToken cancellationToken);
+    Task<T?> GetByIdAsync(object id);
+    Task<T> AddAsync(T entity);
+    Task AddRange(IEnumerable<T> entities);
+    Task UpdateAsync(T entity);
+    Task DeleteAsync(object id);
+    Task DeleteAsync(T entity);
+    Task DeleteRange(IEnumerable<T> entities);
 }

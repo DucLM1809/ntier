@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Ntier.Business.Exceptions;
 using Ntier.DataAccess.Repositories.Interfaces;
@@ -23,11 +24,10 @@ public class NutrientService : INutrientService
 
         try
         {
-            var nutrients = await _unitOfWork.Nutrients.GetFilteredAsync(null, queryParameters, cancellationToken);
+            var nutrients = await _unitOfWork.Nutrients.GetAsync(null, queryParameters);
 
-            _logger.LogInformation("Successfully retrieved {NutrientCount} nutrients.", nutrients.Count);
 
-            return nutrients;
+            return await nutrients.ToListAsync(cancellationToken);
         }
         catch (Exception ex)
         {
@@ -43,7 +43,7 @@ public class NutrientService : INutrientService
 
         try
         {
-            var nutrient = await _unitOfWork.Nutrients.GetByIdAsync(id, cancellationToken);
+            var nutrient = await _unitOfWork.Nutrients.GetByIdAsync(id);
 
             if (nutrient == null)
             {
@@ -66,7 +66,8 @@ public class NutrientService : INutrientService
 
         try
         {
-            var addedNutrient = await _unitOfWork.Nutrients.AddAsync(nutrient, cancellationToken);
+            var addedNutrient = await _unitOfWork.Nutrients.AddAsync(nutrient);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Successfully added nutrient with ID: {NutrientId}", addedNutrient.Id);
 
@@ -85,11 +86,10 @@ public class NutrientService : INutrientService
 
         try
         {
-            var updatedNutrient = await _unitOfWork.Nutrients.UpdateAsync(nutrient, cancellationToken);
+            await _unitOfWork.Nutrients.UpdateAsync(nutrient);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            _logger.LogInformation("Successfully updated nutrient with ID: {NutrientId}", updatedNutrient.Id);
-
-            return updatedNutrient;
+            return nutrient;
         }
         catch (Exception ex)
         {
@@ -104,7 +104,7 @@ public class NutrientService : INutrientService
 
         try
         {
-            var nutrient = await _unitOfWork.Nutrients.GetByIdAsync(id, cancellationToken);
+            var nutrient = await _unitOfWork.Nutrients.GetByIdAsync(id);
 
             if (nutrient == null)
             {
@@ -112,7 +112,8 @@ public class NutrientService : INutrientService
                 throw new NotFoundException($"Nutrient with ID: {id} not found.");
             }
 
-            await _unitOfWork.Nutrients.DeleteAsync(id, cancellationToken);
+            await _unitOfWork.Nutrients.DeleteAsync(id);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Successfully deleted nutrient with ID: {NutrientId}", id);
         }

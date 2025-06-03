@@ -1,5 +1,4 @@
 using System.Security.Cryptography;
-using System.Text;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -37,7 +36,8 @@ public class AuthService : IAuthService
 
             var user = _mapper.Map<User>(registerDto with { Password = hashedPassword });
 
-            await _unitOfWork.Users.AddAsync(user, cancellationToken);
+            await _unitOfWork.Users.AddAsync(user);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("User {Email} registered successfully with ID {UserId}", user.Email, user.Id);
 
@@ -50,13 +50,14 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<AuthResponseDto> Authenticate(LoginDto loginDto, string? deviceInfo, string? ipAddress, CancellationToken cancellationToken)
+    public async Task<AuthResponseDto> Authenticate(LoginDto loginDto, string? deviceInfo, string? ipAddress,
+        CancellationToken cancellationToken)
     {
         _logger.LogInformation("Authentication attempt for email: {Email}", loginDto.Email);
 
         try
         {
-            var user = await _unitOfWork.Users.GetUserByEmail(loginDto.Email, cancellationToken);
+            var user = await _unitOfWork.Users.GetUserByEmail(loginDto.Email);
 
             if (user == null)
             {
@@ -86,7 +87,8 @@ public class AuthService : IAuthService
                 UserId = user.Id
             };
 
-            await _unitOfWork.RefreshTokens.AddAsync(refreshTokenEntity, cancellationToken);
+            await _unitOfWork.RefreshTokens.AddAsync(refreshTokenEntity);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Authentication succeeded for email: {Email}. Token generated.", loginDto.Email);
 
@@ -100,14 +102,16 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<AuthResponseDto> RefreshToken(RefreshTokenDto refreshTokenDto, CancellationToken cancellationToken)
+    public async Task<AuthResponseDto> RefreshToken(RefreshTokenDto refreshTokenDto,
+        CancellationToken cancellationToken)
     {
         _logger.LogInformation("Attempting to refresh token for {RefreshToken}", refreshTokenDto.RefreshToken);
 
         try
         {
-            var storedToken = await _unitOfWork.RefreshTokens.GetByTokenAsync(refreshTokenDto.RefreshToken, cancellationToken);
-            if (storedToken == null)
+            var storedToken =
+                await _unitOfWork.RefreshTokens.GetByTokenAsync(refreshTokenDto.RefreshToken, cancellationToken);
+            if (storedToken is null)
             {
                 _logger.LogWarning("Refresh token not found: {RefreshToken}", refreshTokenDto.RefreshToken);
                 return null;
@@ -133,7 +137,8 @@ public class AuthService : IAuthService
             storedToken.Token = newRefreshToken;
             storedToken.ExpiryDate = DateTime.UtcNow.AddDays(7);
             storedToken.IsRevoked = false;
-            await _unitOfWork.RefreshTokens.UpdateAsync(storedToken, cancellationToken);
+            await _unitOfWork.RefreshTokens.UpdateAsync(storedToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             _logger.LogInformation("Refresh token successfully generated for user {UserId}", user.Id);
 

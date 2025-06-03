@@ -17,74 +17,115 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         _dbSet = context.Set<T>();
     }
 
-    public IQueryable<T> GetAll(CancellationToken cancellationToken)
-    {
-        return _dbSet.AsQueryable();
-    }
-
-    public IQueryable<T> Find(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
-    {
-        return _dbSet.Where(predicate).AsQueryable();
-    }
-
-    public async Task<List<T>> GetFilteredAsync(Expression<Func<T, bool>>? predicate = null,
-        QueryParameters? queryParams = null, CancellationToken cancellationToken = default,
-        params Expression<Func<T, object>>[]? includesProperties)
+    public IQueryable<T> Get(
+        Expression<Func<T, bool>>? predicate = null,
+        QueryParameters? queryParams = null,
+        List<Expression<Func<T, object>>>? includes = null,
+        bool disableTracking = false)
     {
         IQueryable<T> query = _dbSet;
 
         // Apply Filtering (if predicate exists)
-        if (predicate != null) query = query.Where(predicate);
+        if (predicate is not null) query = query.Where(predicate);
 
         // Apply Sorting and Pagination (if queryParams exists)
-        if (queryParams != null)
+        if (queryParams is not null && queryParams.SortBy is not null)
             query = query
                 .ApplySorting(queryParams.SortBy, queryParams.SortOrder)
                 .ApplyPagination(queryParams.Page, queryParams.PageSize);
 
         // Apply Includes (if any)
-        if (includesProperties != null)
-            foreach (var includeProperty in includesProperties)
-                query = query.Include(includeProperty);
+        if (includes is not null) query = includes.Aggregate(query, (current, include) => current.Include(include));
 
-        return await query.AsNoTracking().ToListAsync(cancellationToken);
+        if (disableTracking) query = query.AsNoTracking();
+
+        return query.AsQueryable();
     }
 
-    public async Task<T> AddAsync(T entity, CancellationToken cancellationToken)
+    public Task<IQueryable<T>> GetAsync(
+        Expression<Func<T, bool>>? predicate = null,
+        QueryParameters? queryParams = null,
+        List<Expression<Func<T, object>>>? includes = null,
+        bool disableTracking = false)
     {
-        await _dbSet.AddAsync(entity, cancellationToken);
-        await _context.SaveChangesAsync(cancellationToken);
+        return Task.FromResult(Get(predicate, queryParams, includes, disableTracking));
+    }
 
+    /*
+     * The T? in Task<T?> GetByIdAsync(object id); indicates that the method may return a value of type T or null.
+     * This is useful for reference types or nullable value types, allowing the method to signal that an entity with the given id might not exist in the data store.
+     * It improves null-safety and makes the contract of the method explicit.
+     */
+    public async Task<T?> GetByIdAsync(object id)
+    {
+        return await _dbSet.FindAsync(id);
+    }
+
+    /*
+     * Using await _dbSet.AddAsync(entity); await _context.SaveChangesAsync(); inside the repository method immediately persists the entity, which can lead to:
+     * Less efficient database usage (multiple small transactions)
+     * Harder unit testing and transaction management
+     * Less flexibility for the service layer to control save timing
+     */
+    public async Task<T> AddAsync(T entity)
+    {
+        if (_context.Entry(entity).State == EntityState.Detached) _dbSet.Attach(entity);
+        await _dbSet.AddAsync(entity);
         return entity;
     }
 
-    public async Task<T> UpdateAsync(T entity, CancellationToken cancellationToken)
+    public async Task AddRange(IEnumerable<T> entities)
     {
-        _dbSet.Update(entity);
-        await _context.SaveChangesAsync(cancellationToken);
+        var listEntities = entities.ToList();
 
-        return entity;
+        listEntities.ForEach(entity =>
+        {
+            if (_context.Entry(entity).State == EntityState.Detached) _dbSet.Attach(entity);
+        });
+
+        await _dbSet.AddRangeAsync(listEntities);
     }
 
-    public async Task DeleteAsync(int id, CancellationToken cancellationToken)
+    public Task UpdateAsync(T entity)
     {
-        var entity = await GetByIdAsync(id, cancellationToken);
+        if (_context.Entry(entity).State == EntityState.Detached) _dbSet.Attach(entity);
+
+        _dbSet.Entry(entity).State = EntityState.Modified;
+
+        _context.Set<T>().Update(entity);
+        return Task.CompletedTask;
+    }
+
+    public async Task DeleteAsync(object id)
+    {
+        var entity = await GetByIdAsync(id);
 
         if (entity != null)
         {
             _dbSet.Remove(entity);
-            await _context.SaveChangesAsync(cancellationToken);
+            await _context.SaveChangesAsync();
         }
     }
 
-    public Task<List<T>> AddRangeAsync(List<T> entities, CancellationToken cancellationToken)
+    public Task DeleteAsync(T entity)
     {
-        _dbSet.AddRange(entities);
-        return _context.SaveChangesAsync(cancellationToken).ContinueWith(_ => entities);
+        if (_context.Entry(entity).State == EntityState.Detached) _dbSet.Attach(entity);
+
+        _dbSet.Remove(entity);
+
+        return Task.CompletedTask;
     }
 
-    public async Task<T> GetByIdAsync(int id, CancellationToken cancellationToken)
+    public Task DeleteRange(IEnumerable<T> entities)
     {
-        return await _dbSet.FindAsync(id, cancellationToken);
+        var listEntities = entities.ToList();
+        listEntities.ForEach(entity =>
+        {
+            if (_context.Entry(entity).State == EntityState.Detached) _dbSet.Attach(entity);
+        });
+
+        _dbSet.RemoveRange(listEntities);
+
+        return Task.CompletedTask;
     }
 }

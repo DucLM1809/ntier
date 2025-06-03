@@ -13,8 +13,8 @@ public class UserRepository : GenericRepository<User>, IUserRepository
         _context = context;
     }
 
-    public async Task<User> GetUserByEmail(string email, CancellationToken cancellationToken)
+    public async Task<User?> GetUserByEmail(string email)
     {
-        return await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
+        return await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Email == email);
     }
 }
